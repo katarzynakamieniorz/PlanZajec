@@ -5,6 +5,7 @@
  */
 package Main;
 
+import static Main.DataBase.*;
 import javax.swing.JPopupMenu;
 
 /**
@@ -18,6 +19,11 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        Connection();
+        CreateTableLogin();
+        InsertIntoLogin("Admin1","Haslo1");
+        InsertIntoLogin("Admin2","Haslo2");
+        InsertIntoLogin("Admin3","Haslo3");
         
         
     }
