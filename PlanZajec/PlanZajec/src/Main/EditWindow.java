@@ -5,15 +5,7 @@
  */
 package Main;
 
-import static Main.DataBase.url;
 import java.awt.CardLayout;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,7 +70,7 @@ public class EditWindow extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -103,13 +95,6 @@ public class EditWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
-        classPanel = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        classNumberField = new javax.swing.JTextField();
-        gymCheckBox = new javax.swing.JCheckBox();
-        itCheckBox = new javax.swing.JCheckBox();
-        addClassBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         newMenu = new javax.swing.JMenu();
         groupItem1 = new javax.swing.JMenuItem();
@@ -334,10 +319,10 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel7.setText("Wychowawca");
 
-        teacherBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        teacherBox.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teacherBoxActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -365,7 +350,7 @@ public class EditWindow extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, groupPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58)
                         .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(341, Short.MAX_VALUE))
@@ -383,7 +368,7 @@ public class EditWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(329, Short.MAX_VALUE))
         );
 
@@ -534,6 +519,7 @@ public class EditWindow extends javax.swing.JFrame {
             .addGroup(lessonPanelLayout.createSequentialGroup()
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(lessonPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -571,72 +557,6 @@ public class EditWindow extends javax.swing.JFrame {
 
         mainPanel.add(lessonPanel, "lessonPanel");
 
-        classPanel.setPreferredSize(new java.awt.Dimension(762, 434));
-        classPanel.setRequestFocusEnabled(false);
-
-        jLabel16.setText("Dodaj nową salę");
-
-        jLabel17.setText("Numer sali");
-
-        classNumberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classNumberFieldActionPerformed(evt);
-            }
-        });
-
-        gymCheckBox.setText("sala gimnastyczna");
-        gymCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gymCheckBoxActionPerformed(evt);
-            }
-        });
-
-        itCheckBox.setText("sala komputerowa");
-
-        addClassBtn.setText("Dodaj");
-        addClassBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClassBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout classPanelLayout = new javax.swing.GroupLayout(classPanel);
-        classPanel.setLayout(classPanelLayout);
-        classPanelLayout.setHorizontalGroup(
-            classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(classPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itCheckBox)
-                    .addComponent(gymCheckBox)
-                    .addGroup(classPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(46, 46, 46)
-                        .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
-        );
-        classPanelLayout.setVerticalGroup(
-            classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(classPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gymCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itCheckBox)
-                .addContainerGap(291, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(classPanel, "classPanel");
-
         newMenu.setText("Nowy");
 
         groupItem1.setText("Grupy");
@@ -656,11 +576,6 @@ public class EditWindow extends javax.swing.JFrame {
         newMenu.add(teachersItem1);
 
         classItem1.setText("Sale");
-        classItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classItem1ActionPerformed(evt);
-            }
-        });
         newMenu.add(classItem1);
 
         lessonItem.setText("Lekcje");
@@ -722,37 +637,12 @@ public class EditWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_teachersItem1ActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
-        
-        Connection conn = DataBase.Connection();
-        ResultSet rs;
-        //PreparedStatement pst;
-        Statement stmt;
-        
-        String className = classField.getText();
-        //String nauczyciel = teacherBox.getName();
-        NewID noweId = new NewID();
-        int idklasy = noweId.UstawNumer("kla_id", "klasy");
-
-        String sqlAddClass = "insert into KLASY(KLA_ID, KLA_NAZWA) values \n"
-                + "('" + idklasy + "','"+ className + "' );";
-
-        try{
-            stmt = conn.createStatement();
-            stmt.executeUpdate(sqlAddClass);
-            stmt.close();
-            
-            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
-            
-        } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-        
-                
+        // TODO add your handling code here:
     }//GEN-LAST:event_addClassButtonActionPerformed
 
-    private void teacherBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherBoxActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_teacherBoxActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void geographyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geographyBoxActionPerformed
         // TODO add your handling code here:
@@ -794,25 +684,6 @@ public class EditWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lessonItemActionPerformed
 
-    private void classNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classNumberFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_classNumberFieldActionPerformed
-
-    private void gymCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gymCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gymCheckBoxActionPerformed
-
-    private void addClassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addClassBtnActionPerformed
-
-    private void classItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classItem1ActionPerformed
-        if(evt.getSource() == classItem1) {
-            CardLayout card = (CardLayout)mainPanel.getLayout();
-            card.show(mainPanel,"classPanel");
-        }
-    }//GEN-LAST:event_classItem1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -851,7 +722,6 @@ public class EditWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;
     private javax.swing.JButton addLessonBtn;
     private javax.swing.JButton addTeacherButton;
@@ -861,8 +731,6 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JTextField classField;
     private javax.swing.JMenuItem classItem1;
     private javax.swing.JComboBox<String> classList;
-    private javax.swing.JTextField classNumberField;
-    private javax.swing.JPanel classPanel;
     private javax.swing.JPanel cleanPanel;
     private javax.swing.JCheckBox edbBox;
     private javax.swing.JMenu editMenu;
@@ -876,13 +744,12 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem groupItem2;
     private javax.swing.JComboBox<String> groupList;
     private javax.swing.JPanel groupPanel;
-    private javax.swing.JCheckBox gymCheckBox;
     private javax.swing.JCheckBox historyBox;
     private javax.swing.JComboBox<String> hourList;
     private javax.swing.JTextField idField;
     private javax.swing.JCheckBox itBox;
-    private javax.swing.JCheckBox itCheckBox;
     private javax.swing.JCheckBox italianBox;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -890,8 +757,6 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -919,7 +784,6 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JCheckBox religionBox;
     private javax.swing.JCheckBox russianBox;
     private javax.swing.JCheckBox spanishBox;
-    private javax.swing.JComboBox<String> teacherBox;
     private javax.swing.JComboBox<String> teacherList;
     private javax.swing.JPanel teacherPanel;
     private javax.swing.JPanel teacherPanel2;

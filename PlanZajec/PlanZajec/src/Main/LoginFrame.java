@@ -143,6 +143,7 @@ PreparedStatement pst = null;
         rs = pst.executeQuery();
         if(rs.next())
         {
+            JOptionPane.showMessageDialog(null, "Username and password is correct!");
             dispose();
             EditWindow edit = new EditWindow();
             edit.setVisible(true);
@@ -156,7 +157,7 @@ PreparedStatement pst = null;
             login.setVisible(true);
             
         }
-            pst.close();
+        
         }
             catch(Exception e){
                     JOptionPane.showMessageDialog(null, e);

@@ -46,7 +46,7 @@ public class DataBase {
            {
             
             stmt.execute(sql);
-             stmt.close();
+             
            }
            catch (SQLException e) 
            {
@@ -74,29 +74,12 @@ public class DataBase {
                 pstmt.setString(2, pass);
                 pstmt.executeUpdate();
             }
-            stmt.close();
+            
         } 
         catch (SQLException e)
         {
             System.out.println(e.getMessage());
         }
-        
-     }
-     
-     public static void CreateTableClass(){
-         String createTableKlasy = "CREATE TABLE IF NOT EXISTS klasy (\n"
-                 +"kla_id integer primary key not null \n"
-                 +"kla_nazwa text \n"
-                 +"kla_wychowawca integer unique);";
-         
-         try(Connection conn = DriverManager.getConnection(url);
-            Statement stmt = conn.createStatement()){
-             stmt.execute(createTableKlasy);
-             stmt.close();
-         } catch(SQLException e){
-             System.out.println(e.getMessage());
-         }
-         
      }
 }
 
