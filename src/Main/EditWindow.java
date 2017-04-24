@@ -24,11 +24,35 @@ public class EditWindow extends javax.swing.JFrame {
     /**
      * Creates new form EditWindow
      */
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
     public EditWindow() {
+        
+        conn = DataBase.Connection();
         initComponents();
             CardLayout card = (CardLayout)mainPanel.getLayout();
             card.show(mainPanel,"cleanPanel");
         
+            Fillcombo();
+    }
+    
+    private void Fillcombo(){
+        try{
+            String sql = "select * from przedmioty";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String Prz_NAME = rs.getString("Prz_NAME");
+                jComboBox9.addItem(Prz_NAME);
+                jComboBox1.addItem(Prz_NAME);
+            }
+            
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -103,6 +127,8 @@ public class EditWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -110,6 +136,62 @@ public class EditWindow extends javax.swing.JFrame {
         gymCheckBox = new javax.swing.JCheckBox();
         itCheckBox = new javax.swing.JCheckBox();
         addClassBtn = new javax.swing.JButton();
+        changeGroup = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        deleteButton = new javax.swing.JButton();
+        OKButton = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        changeTeacher = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        mathBox1 = new javax.swing.JCheckBox();
+        polishBox1 = new javax.swing.JCheckBox();
+        englishBox1 = new javax.swing.JCheckBox();
+        germanBox1 = new javax.swing.JCheckBox();
+        biologyBox1 = new javax.swing.JCheckBox();
+        italianBox1 = new javax.swing.JCheckBox();
+        frenchBox1 = new javax.swing.JCheckBox();
+        spanishBox1 = new javax.swing.JCheckBox();
+        chemistryBox1 = new javax.swing.JCheckBox();
+        physicsBox1 = new javax.swing.JCheckBox();
+        geographyBox1 = new javax.swing.JCheckBox();
+        religionBox1 = new javax.swing.JCheckBox();
+        ethicsBox1 = new javax.swing.JCheckBox();
+        wdzBoz1 = new javax.swing.JCheckBox();
+        edbBox1 = new javax.swing.JCheckBox();
+        artBox1 = new javax.swing.JCheckBox();
+        ppBox1 = new javax.swing.JCheckBox();
+        itBox1 = new javax.swing.JCheckBox();
+        wosBox1 = new javax.swing.JCheckBox();
+        historyBox1 = new javax.swing.JCheckBox();
+        wfBox = new javax.swing.JCheckBox();
+        saveButton = new javax.swing.JButton();
+        changeLesson = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        mondayRadioBtn1 = new javax.swing.JRadioButton();
+        tuesdayRadioBtn1 = new javax.swing.JRadioButton();
+        wednesdayRadioBtn1 = new javax.swing.JRadioButton();
+        thursdayRadioBtn1 = new javax.swing.JRadioButton();
+        fridayRadioBtn1 = new javax.swing.JRadioButton();
+        jLabel24 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        edit2Button = new javax.swing.JButton();
+        delete2Button = new javax.swing.JButton();
+        previewPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         newMenu = new javax.swing.JMenu();
         groupItem1 = new javax.swing.JMenuItem();
@@ -119,6 +201,7 @@ public class EditWindow extends javax.swing.JFrame {
         editMenu = new javax.swing.JMenu();
         groupItem2 = new javax.swing.JMenuItem();
         teachersItem2 = new javax.swing.JMenuItem();
+        lessonItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -260,7 +343,7 @@ public class EditWindow extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(addTeacherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         teacherPanelLayout.setVerticalGroup(
             teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +404,7 @@ public class EditWindow extends javax.swing.JFrame {
                     .addComponent(spanishBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ppBox)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         mainPanel.add(teacherPanel, "teacherPanel");
@@ -368,7 +451,7 @@ public class EditWindow extends javax.swing.JFrame {
                                 .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58)
                         .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         groupPanelLayout.setVerticalGroup(
             groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +467,7 @@ public class EditWindow extends javax.swing.JFrame {
                 .addGroup(groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
 
         mainPanel.add(groupPanel, "groupPanel");
@@ -393,11 +476,11 @@ public class EditWindow extends javax.swing.JFrame {
         cleanPanel.setLayout(cleanPanelLayout);
         cleanPanelLayout.setHorizontalGroup(
             cleanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 762, Short.MAX_VALUE)
+            .addGap(0, 804, Short.MAX_VALUE)
         );
         cleanPanelLayout.setVerticalGroup(
             cleanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGap(0, 458, Short.MAX_VALUE)
         );
 
         mainPanel.add(cleanPanel, "cleanPanel");
@@ -411,14 +494,14 @@ public class EditWindow extends javax.swing.JFrame {
             .addGroup(teacherPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(545, Short.MAX_VALUE))
         );
         teacherPanel2Layout.setVerticalGroup(
             teacherPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(teacherPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
 
         mainPanel.add(teacherPanel2, "teacherPanel2");
@@ -456,12 +539,22 @@ public class EditWindow extends javax.swing.JFrame {
         });
 
         thursdayRadioBtn.setText("Czwartek");
+        thursdayRadioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thursdayRadioBtnActionPerformed(evt);
+            }
+        });
 
         fridayRadioBtn.setText("Piątek");
 
         jLabel15.setText("Godzina");
 
         hourList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hourList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hourListActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
@@ -493,6 +586,15 @@ public class EditWindow extends javax.swing.JFrame {
             }
         });
 
+        jLabel28.setText("Przedmiot");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout lessonPanelLayout = new javax.swing.GroupLayout(lessonPanel);
         lessonPanel.setLayout(lessonPanelLayout);
         lessonPanelLayout.setHorizontalGroup(
@@ -500,34 +602,44 @@ public class EditWindow extends javax.swing.JFrame {
             .addGroup(lessonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(lessonPanelLayout.createSequentialGroup()
-                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15))
-                            .addGap(18, 18, 18)
-                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tuesdayRadioBtn)
-                                .addComponent(mondayRadioBtn)
-                                .addComponent(wednesdayRadioBtn)
-                                .addComponent(thursdayRadioBtn)
-                                .addComponent(fridayRadioBtn)
-                                .addComponent(hourList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(lessonPanelLayout.createSequentialGroup()
-                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(groupList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(classList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(lessonPanelLayout.createSequentialGroup()
+                                .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tuesdayRadioBtn)
+                                            .addComponent(mondayRadioBtn)
+                                            .addComponent(wednesdayRadioBtn)
+                                            .addComponent(thursdayRadioBtn)
+                                            .addComponent(fridayRadioBtn)))
+                                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(groupList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(classList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 42, Short.MAX_VALUE)))
+                        .addGap(42, 42, 42)
+                        .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         lessonPanelLayout.setVerticalGroup(
             lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,26 +659,31 @@ public class EditWindow extends javax.swing.JFrame {
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(mondayRadioBtn))
+                        .addGap(3, 3, 3)
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mondayRadioBtn)
+                            .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tuesdayRadioBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(wednesdayRadioBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(thursdayRadioBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(6, 6, 6)
                         .addComponent(fridayRadioBtn)
-                        .addGap(2, 2, 2)
+                        .addGap(18, 18, 18)
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
                     .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 97, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 79, Short.MAX_VALUE))
         );
 
         mainPanel.add(lessonPanel, "lessonPanel");
@@ -614,9 +731,9 @@ public class EditWindow extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,10 +749,452 @@ public class EditWindow extends javax.swing.JFrame {
                 .addComponent(gymCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(itCheckBox)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         mainPanel.add(classPanel, "classPanel");
+
+        jLabel18.setText("Wybierz klasę:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        deleteButton.setText("Usuń");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        OKButton.setText("OK");
+        OKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Wybierz nowego wychowawcę:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout changeGroupLayout = new javax.swing.GroupLayout(changeGroup);
+        changeGroup.setLayout(changeGroupLayout);
+        changeGroupLayout.setHorizontalGroup(
+            changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeGroupLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(changeGroupLayout.createSequentialGroup()
+                        .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(changeGroupLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(changeGroupLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(65, 65, 65)
+                        .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(OKButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(400, Short.MAX_VALUE))
+        );
+        changeGroupLayout.setVerticalGroup(
+            changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeGroupLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(12, 12, 12)
+                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(295, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(changeGroup, "changeGroup");
+
+        jLabel20.setText("Wybierz nauczyciela:");
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton1.setText("Usuń");
+
+        jLabel21.setText("Przydziel przedmiot:");
+
+        mathBox1.setText("Matematyka");
+        mathBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mathBox1ActionPerformed(evt);
+            }
+        });
+
+        polishBox1.setText("Język polski");
+
+        englishBox1.setText("Język anglieski");
+
+        germanBox1.setText("Język niemiecki");
+
+        biologyBox1.setText("Biologia");
+        biologyBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biologyBox1ActionPerformed(evt);
+            }
+        });
+
+        italianBox1.setText("Język włoski");
+
+        frenchBox1.setText("Język francuski");
+        frenchBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frenchBox1ActionPerformed(evt);
+            }
+        });
+
+        spanishBox1.setText("Język hiszpański");
+
+        chemistryBox1.setText("Chemia");
+
+        physicsBox1.setText("Fizyka");
+        physicsBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                physicsBox1ActionPerformed(evt);
+            }
+        });
+
+        geographyBox1.setText("Geografia");
+        geographyBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                geographyBox1ActionPerformed(evt);
+            }
+        });
+
+        religionBox1.setText("Religia");
+        religionBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                religionBox1ActionPerformed(evt);
+            }
+        });
+
+        ethicsBox1.setText("Etyka");
+
+        wdzBoz1.setText("Wychowanie do życia w rodzinie");
+
+        edbBox1.setText("Edukacja dla bezpieczeństwa");
+
+        artBox1.setText("Kultura");
+
+        ppBox1.setText("Podstawy przedsiębiorczości");
+
+        itBox1.setText("Informatyka");
+
+        wosBox1.setText("Wiedza o społeczeństwie");
+        wosBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wosBox1ActionPerformed(evt);
+            }
+        });
+
+        historyBox1.setText("Historia");
+
+        wfBox.setText("Wychowanie fizyczne");
+        wfBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wfBoxActionPerformed(evt);
+            }
+        });
+
+        saveButton.setText("Zapisz");
+
+        javax.swing.GroupLayout changeTeacherLayout = new javax.swing.GroupLayout(changeTeacher);
+        changeTeacher.setLayout(changeTeacherLayout);
+        changeTeacherLayout.setHorizontalGroup(
+            changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeTeacherLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(changeTeacherLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(changeTeacherLayout.createSequentialGroup()
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(133, 133, 133)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(changeTeacherLayout.createSequentialGroup()
+                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(polishBox1)
+                                    .addComponent(englishBox1)
+                                    .addComponent(germanBox1)
+                                    .addComponent(italianBox1)
+                                    .addComponent(frenchBox1)
+                                    .addComponent(spanishBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(historyBox1))
+                                .addGap(54, 54, 54)
+                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(biologyBox1)
+                                    .addComponent(chemistryBox1)
+                                    .addComponent(physicsBox1)
+                                    .addComponent(geographyBox1)
+                                    .addComponent(mathBox1)
+                                    .addComponent(itBox1)
+                                    .addComponent(ppBox1))
+                                .addGap(30, 30, 30)
+                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(wdzBoz1)
+                                    .addComponent(religionBox1)
+                                    .addComponent(ethicsBox1)
+                                    .addComponent(edbBox1)
+                                    .addComponent(wosBox1)
+                                    .addComponent(artBox1)
+                                    .addComponent(wfBox)))
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 243, Short.MAX_VALUE))
+                    .addGroup(changeTeacherLayout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))))
+        );
+        changeTeacherLayout.setVerticalGroup(
+            changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeTeacherLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addGap(14, 14, 14)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mathBox1)
+                    .addComponent(polishBox1)
+                    .addComponent(wosBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chemistryBox1)
+                    .addComponent(englishBox1)
+                    .addComponent(artBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(physicsBox1)
+                    .addComponent(germanBox1)
+                    .addComponent(wfBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(geographyBox1)
+                    .addComponent(italianBox1)
+                    .addComponent(edbBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(biologyBox1)
+                    .addComponent(frenchBox1)
+                    .addComponent(religionBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spanishBox1)
+                    .addComponent(itBox1)
+                    .addComponent(ethicsBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ppBox1)
+                    .addComponent(wdzBoz1)
+                    .addComponent(historyBox1))
+                .addGap(18, 18, 18)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(changeTeacher, "changeTeacher");
+
+        jLabel22.setText("Klasa:");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel23.setText("Dzień:");
+
+        mondayRadioBtn1.setText("Poniedziałek");
+        mondayRadioBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mondayRadioBtn1ActionPerformed(evt);
+            }
+        });
+
+        tuesdayRadioBtn1.setText("Wtorek");
+
+        wednesdayRadioBtn1.setText("Środa");
+        wednesdayRadioBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wednesdayRadioBtn1ActionPerformed(evt);
+            }
+        });
+
+        thursdayRadioBtn1.setText("Czwartek");
+        thursdayRadioBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thursdayRadioBtn1ActionPerformed(evt);
+            }
+        });
+
+        fridayRadioBtn1.setText("Piątek");
+
+        jLabel24.setText("Godzina:");
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel25.setText("Sala:");
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox7ActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setText("Nauczyciel:");
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        edit2Button.setText("Edytuj");
+        edit2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit2ButtonActionPerformed(evt);
+            }
+        });
+
+        delete2Button.setText("Usuń");
+        delete2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete2ButtonActionPerformed(evt);
+            }
+        });
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jTextArea2.setRows(5);
+        jTextArea2.setText("tutaj będzie się znajdował podgląd planu uaktualniany");
+        jScrollPane2.setViewportView(jTextArea2);
+
+        javax.swing.GroupLayout previewPanel1Layout = new javax.swing.GroupLayout(previewPanel1);
+        previewPanel1.setLayout(previewPanel1Layout);
+        previewPanel1Layout.setHorizontalGroup(
+            previewPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previewPanel1Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        previewPanel1Layout.setVerticalGroup(
+            previewPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previewPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+
+        jLabel27.setText("Przedmiot:");
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
+        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout changeLessonLayout = new javax.swing.GroupLayout(changeLesson);
+        changeLesson.setLayout(changeLessonLayout);
+        changeLessonLayout.setHorizontalGroup(
+            changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeLessonLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(changeLessonLayout.createSequentialGroup()
+                        .addComponent(edit2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(delete2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(changeLessonLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(41, 41, 41)
+                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(changeLessonLayout.createSequentialGroup()
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27))
+                        .addGap(18, 18, 18)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(changeLessonLayout.createSequentialGroup()
+                                .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tuesdayRadioBtn1)
+                                    .addComponent(mondayRadioBtn1)
+                                    .addComponent(wednesdayRadioBtn1)
+                                    .addComponent(thursdayRadioBtn1)
+                                    .addComponent(fridayRadioBtn1))
+                                .addGap(0, 38, Short.MAX_VALUE))
+                            .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(previewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+        );
+        changeLessonLayout.setVerticalGroup(
+            changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changeLessonLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(changeLessonLayout.createSequentialGroup()
+                        .addComponent(previewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 69, Short.MAX_VALUE))
+                    .addGroup(changeLessonLayout.createSequentialGroup()
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(mondayRadioBtn1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tuesdayRadioBtn1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(wednesdayRadioBtn1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(thursdayRadioBtn1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fridayRadioBtn1)
+                        .addGap(16, 16, 16)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(24, 24, 24)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(edit2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delete2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        mainPanel.add(changeLesson, "changeLesson");
 
         newMenu.setText("Nowy");
 
@@ -684,7 +1243,20 @@ public class EditWindow extends javax.swing.JFrame {
         editMenu.add(groupItem2);
 
         teachersItem2.setText("Nauczyciele");
+        teachersItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teachersItem2ActionPerformed(evt);
+            }
+        });
         editMenu.add(teachersItem2);
+
+        lessonItem2.setText("Plan");
+        lessonItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lessonItem2ActionPerformed(evt);
+            }
+        });
+        editMenu.add(lessonItem2);
 
         jMenuBar1.add(editMenu);
 
@@ -739,7 +1311,7 @@ public class EditWindow extends javax.swing.JFrame {
         try{
             stmt = conn.createStatement();
             stmt.executeUpdate(sqlAddClass);
-            stmt.close();
+            //stmt.close();
             
             JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
             
@@ -771,7 +1343,10 @@ public class EditWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_nameFieldActionPerformed
 
     private void groupItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupItem2ActionPerformed
-        // TODO add your handling code here:
+        if(evt.getSource() == groupItem2) {
+            CardLayout card = (CardLayout)mainPanel.getLayout();
+            card.show(mainPanel,"changeGroup");
+        }
     }//GEN-LAST:event_groupItem2ActionPerformed
 
     private void mondayRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mondayRadioBtnActionPerformed
@@ -813,6 +1388,100 @@ public class EditWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classItem1ActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OKButtonActionPerformed
+
+    private void mathBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mathBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mathBox1ActionPerformed
+
+    private void biologyBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologyBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biologyBox1ActionPerformed
+
+    private void frenchBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frenchBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_frenchBox1ActionPerformed
+
+    private void physicsBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicsBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_physicsBox1ActionPerformed
+
+    private void geographyBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geographyBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_geographyBox1ActionPerformed
+
+    private void religionBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_religionBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_religionBox1ActionPerformed
+
+    private void wosBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wosBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wosBox1ActionPerformed
+
+    private void wfBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wfBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wfBoxActionPerformed
+
+    private void mondayRadioBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mondayRadioBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mondayRadioBtn1ActionPerformed
+
+    private void wednesdayRadioBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wednesdayRadioBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wednesdayRadioBtn1ActionPerformed
+
+    private void thursdayRadioBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thursdayRadioBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_thursdayRadioBtn1ActionPerformed
+
+    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox7ActionPerformed
+
+    private void edit2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit2ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit2ButtonActionPerformed
+
+    private void delete2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete2ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delete2ButtonActionPerformed
+
+    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+
+    }//GEN-LAST:event_jComboBox9ActionPerformed
+
+    private void hourListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hourListActionPerformed
+
+    private void thursdayRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thursdayRadioBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_thursdayRadioBtnActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void teachersItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersItem2ActionPerformed
+        if(evt.getSource() == teachersItem2) {
+            CardLayout card = (CardLayout)mainPanel.getLayout();
+            card.show(mainPanel,"changeTeacher");
+        }
+    }//GEN-LAST:event_teachersItem2ActionPerformed
+
+    private void lessonItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lessonItem2ActionPerformed
+        if(evt.getSource() == lessonItem2) {
+            CardLayout card = (CardLayout)mainPanel.getLayout();
+            card.show(mainPanel,"changeLesson");
+        }
+    }//GEN-LAST:event_lessonItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -851,38 +1520,68 @@ public class EditWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OKButton;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;
     private javax.swing.JButton addLessonBtn;
     private javax.swing.JButton addTeacherButton;
     private javax.swing.JCheckBox artBox;
+    private javax.swing.JCheckBox artBox1;
     private javax.swing.JCheckBox biologyBox;
+    private javax.swing.JCheckBox biologyBox1;
+    private javax.swing.JPanel changeGroup;
+    private javax.swing.JPanel changeLesson;
+    private javax.swing.JPanel changeTeacher;
     private javax.swing.JCheckBox chemistryBox;
+    private javax.swing.JCheckBox chemistryBox1;
     private javax.swing.JTextField classField;
     private javax.swing.JMenuItem classItem1;
     private javax.swing.JComboBox<String> classList;
     private javax.swing.JTextField classNumberField;
     private javax.swing.JPanel classPanel;
     private javax.swing.JPanel cleanPanel;
+    private javax.swing.JButton delete2Button;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JCheckBox edbBox;
+    private javax.swing.JCheckBox edbBox1;
+    private javax.swing.JButton edit2Button;
     private javax.swing.JMenu editMenu;
     private javax.swing.JCheckBox englishBox;
+    private javax.swing.JCheckBox englishBox1;
     private javax.swing.JCheckBox ethicsBox;
+    private javax.swing.JCheckBox ethicsBox1;
     private javax.swing.JCheckBox frenchBox;
+    private javax.swing.JCheckBox frenchBox1;
     private javax.swing.JRadioButton fridayRadioBtn;
+    private javax.swing.JRadioButton fridayRadioBtn1;
     private javax.swing.JCheckBox geographyBox;
+    private javax.swing.JCheckBox geographyBox1;
     private javax.swing.JCheckBox germanBox;
+    private javax.swing.JCheckBox germanBox1;
     private javax.swing.JMenuItem groupItem1;
     private javax.swing.JMenuItem groupItem2;
     private javax.swing.JComboBox<String> groupList;
     private javax.swing.JPanel groupPanel;
     private javax.swing.JCheckBox gymCheckBox;
     private javax.swing.JCheckBox historyBox;
+    private javax.swing.JCheckBox historyBox1;
     private javax.swing.JComboBox<String> hourList;
     private javax.swing.JTextField idField;
     private javax.swing.JCheckBox itBox;
+    private javax.swing.JCheckBox itBox1;
     private javax.swing.JCheckBox itCheckBox;
     private javax.swing.JCheckBox italianBox;
+    private javax.swing.JCheckBox italianBox1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -892,7 +1591,18 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -902,23 +1612,35 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField lastnameFiled;
     private javax.swing.JMenuItem lessonItem;
+    private javax.swing.JMenuItem lessonItem2;
     private javax.swing.JPanel lessonPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JCheckBox mathBox;
+    private javax.swing.JCheckBox mathBox1;
     private javax.swing.JRadioButton mondayRadioBtn;
+    private javax.swing.JRadioButton mondayRadioBtn1;
     private javax.swing.JTextField nameField;
     private javax.swing.JMenu newMenu;
     private javax.swing.JCheckBox peBox;
     private javax.swing.JCheckBox physicsBox;
+    private javax.swing.JCheckBox physicsBox1;
     private javax.swing.JCheckBox polishBox;
+    private javax.swing.JCheckBox polishBox1;
     private javax.swing.JCheckBox ppBox;
+    private javax.swing.JCheckBox ppBox1;
     private javax.swing.JPanel previewPanel;
+    private javax.swing.JPanel previewPanel1;
     private javax.swing.JCheckBox religionBox;
+    private javax.swing.JCheckBox religionBox1;
     private javax.swing.JCheckBox russianBox;
+    private javax.swing.JButton saveButton;
     private javax.swing.JCheckBox spanishBox;
+    private javax.swing.JCheckBox spanishBox1;
     private javax.swing.JComboBox<String> teacherBox;
     private javax.swing.JComboBox<String> teacherList;
     private javax.swing.JPanel teacherPanel;
@@ -926,9 +1648,15 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem teachersItem1;
     private javax.swing.JMenuItem teachersItem2;
     private javax.swing.JRadioButton thursdayRadioBtn;
+    private javax.swing.JRadioButton thursdayRadioBtn1;
     private javax.swing.JRadioButton tuesdayRadioBtn;
+    private javax.swing.JRadioButton tuesdayRadioBtn1;
     private javax.swing.JCheckBox wdzBoz;
+    private javax.swing.JCheckBox wdzBoz1;
     private javax.swing.JRadioButton wednesdayRadioBtn;
+    private javax.swing.JRadioButton wednesdayRadioBtn1;
+    private javax.swing.JCheckBox wfBox;
     private javax.swing.JCheckBox wosBox;
+    private javax.swing.JCheckBox wosBox1;
     // End of variables declaration//GEN-END:variables
 }

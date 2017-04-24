@@ -46,7 +46,7 @@ public class DataBase {
            {
             
             stmt.execute(sql);
-             stmt.close();
+            // stmt.close();
            }
            catch (SQLException e) 
            {
@@ -74,7 +74,7 @@ public class DataBase {
                 pstmt.setString(2, pass);
                 pstmt.executeUpdate();
             }
-            stmt.close();
+           // stmt.close();
         } 
         catch (SQLException e)
         {
@@ -92,11 +92,30 @@ public class DataBase {
          try(Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement()){
              stmt.execute(createTableKlasy);
-             stmt.close();
+            // stmt.close();
          } catch(SQLException e){
              System.out.println(e.getMessage());
          }
          
+     }
+     
+     public static void CreateTablePrzedmioty()
+     {
+         String sql = "CREATE TABLE IF NOT EXISTS Przedmioty (\n"
+                + "	Prz_ID integer NOT NULL PRIMARY KEY,\n"
+                + "	Prz_NAME text NOT NULL,\n"
+                + ");";
+         try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement())
+           {
+            
+            stmt.execute(sql);
+             
+           }
+           catch (SQLException e) 
+           {
+            System.out.println(e.getMessage());
+           }
      }
 }
 
