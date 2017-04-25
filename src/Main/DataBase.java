@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 public class DataBase {
             static String url = "jdbc:sqlite:Planzajec.db";
             Connection conn = null;
+            ResultSet rs = null;
+            PreparedStatement pst = null;
       
      public static Connection Connection()
      {
@@ -119,10 +121,15 @@ public class DataBase {
      }
      
       public static void CreateTableTeacher(){
-         String createTableNauczyciel = "CREATE TABLE IF NOT EXISTS NAUCZYCIEL (\n"
+         String createTableNauczyciel = "CREATE TABLE IF NOT EXISTS NAUCZYCIELE (\n"
                  +"NAU_ID integer primary key not null \n"
                  +"NAU_IMIE text \n"
-                 +"NAU_NAZWISKO text \n;";
+                 +"NAU_NAZWISKO text \n"
+                 +"PRZ_NAME_1 text \n"
+                 +"PRZ_NAME_2 text \n"
+                 +"PRZ_NAME_3 text \n"
+                 +"PRZ_NAME_4 text \n"
+                 +"PRZ_NAME_5 text \n;";
          
          try(Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement()){
@@ -133,5 +140,7 @@ public class DataBase {
          }
          
      }
+      
+     
 }
 

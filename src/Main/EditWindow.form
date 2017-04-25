@@ -135,40 +135,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="106" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="mathBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="biologyBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chemistryBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="physicsBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="geographyBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="itBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="historyBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="polishBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="englishBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="germanBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="russianBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="italianBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="frenchBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spanishBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="wosBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="religionBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ethicsBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edbBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="peBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="wdzBoz" min="-2" max="-2" attributes="0"/>
-                                  <Component id="artBox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ppBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="106" max="-2" attributes="0"/>
@@ -191,8 +157,19 @@
                               <Component id="addTeacherButton" min="-2" pref="122" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" pref="366" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="106" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jComboBox11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="214" max="32767" attributes="0"/>
+                      <EmptySpace pref="371" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -226,49 +203,17 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="mathBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="polishBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="religionBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="englishBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="biologyBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ethicsBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="germanBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chemistryBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="edbBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="physicsBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="russianBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="peBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="geographyBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="wdzBoz" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="italianBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="wosBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="frenchBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="artBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="historyBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spanishBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ppBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Component id="jComboBox11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jComboBox12" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jComboBox13" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jComboBox14" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="181" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -315,128 +260,62 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addTeacherButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="mathBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Matematyka"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mathBoxActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="polishBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk polski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="englishBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk anglieski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="germanBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk niemiecki"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="biologyBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Biologia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="chemistryBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Chemia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="physicsBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Fizyka"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="russianBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk rosyjski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="religionBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Religia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ethicsBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Etyka"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="geographyBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Geografia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="geographyBoxActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="edbBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Edukacja dla bezpiecze&#x144;stwa"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="peBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wychowanie fizyczne"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="historyBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Historia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="itBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Informatyka"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="wosBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wiedza o spo&#x142;ecze&#x144;stwie"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="wdzBoz">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wychowanie do &#x17c;ycia w rodzinie"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="artBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kultura"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ppBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Podstawy przedsi&#x119;biorczo&#x15b;ci"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="italianBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk w&#x142;oski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="frenchBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk francuski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="spanishBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk hiszpa&#x144;ski"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ID"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="idField">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox10">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox10ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox11">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox11ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox12">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox12ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox13">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox13ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox14">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox14ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +37,7 @@ public class EditWindow extends javax.swing.JFrame {
             card.show(mainPanel,"cleanPanel");
         
             Fillcombo();
+            FillCombo2();
     }
     
     private void Fillcombo(){
@@ -54,6 +56,28 @@ public class EditWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    private void FillCombo2(){
+          
+          try{
+              
+              String sql="select * from Przedmioty";
+              pst = conn.prepareStatement(sql);
+              rs = pst.executeQuery();
+              
+              while(rs.next()){
+                  String name = rs.getString("Prz_NAME");
+                  jComboBox10.addItem(name);
+                  jComboBox11.addItem(name);
+                  jComboBox12.addItem(name);
+                  jComboBox13.addItem(name);
+                  jComboBox14.addItem(name);
+              }
+              
+          } catch(Exception e){
+              JOptionPane.showMessageDialog(null,e.getMessage());
+          }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,36 +97,19 @@ public class EditWindow extends javax.swing.JFrame {
         lastnameFiled = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         addTeacherButton = new javax.swing.JButton();
-        mathBox = new javax.swing.JCheckBox();
-        polishBox = new javax.swing.JCheckBox();
-        englishBox = new javax.swing.JCheckBox();
-        germanBox = new javax.swing.JCheckBox();
-        biologyBox = new javax.swing.JCheckBox();
-        chemistryBox = new javax.swing.JCheckBox();
-        physicsBox = new javax.swing.JCheckBox();
-        russianBox = new javax.swing.JCheckBox();
-        religionBox = new javax.swing.JCheckBox();
-        ethicsBox = new javax.swing.JCheckBox();
-        geographyBox = new javax.swing.JCheckBox();
-        edbBox = new javax.swing.JCheckBox();
-        peBox = new javax.swing.JCheckBox();
-        historyBox = new javax.swing.JCheckBox();
-        itBox = new javax.swing.JCheckBox();
-        wosBox = new javax.swing.JCheckBox();
-        wdzBoz = new javax.swing.JCheckBox();
-        artBox = new javax.swing.JCheckBox();
-        ppBox = new javax.swing.JCheckBox();
-        italianBox = new javax.swing.JCheckBox();
-        frenchBox = new javax.swing.JCheckBox();
-        spanishBox = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         idField = new javax.swing.JTextField();
+        jComboBox10 = new javax.swing.JComboBox();
+        jComboBox11 = new javax.swing.JComboBox();
+        jComboBox12 = new javax.swing.JComboBox();
+        jComboBox13 = new javax.swing.JComboBox();
+        jComboBox14 = new javax.swing.JComboBox();
         groupPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<>();
+        teacherBox = new javax.swing.JComboBox<String>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -110,11 +117,11 @@ public class EditWindow extends javax.swing.JFrame {
         lessonPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        groupList = new javax.swing.JComboBox<>();
+        groupList = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
-        classList = new javax.swing.JComboBox<>();
+        classList = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
-        teacherList = new javax.swing.JComboBox<>();
+        teacherList = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         mondayRadioBtn = new javax.swing.JRadioButton();
         tuesdayRadioBtn = new javax.swing.JRadioButton();
@@ -122,13 +129,13 @@ public class EditWindow extends javax.swing.JFrame {
         thursdayRadioBtn = new javax.swing.JRadioButton();
         fridayRadioBtn = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        hourList = new javax.swing.JComboBox<>();
+        hourList = new javax.swing.JComboBox<String>();
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -138,14 +145,14 @@ public class EditWindow extends javax.swing.JFrame {
         addClassBtn = new javax.swing.JButton();
         changeGroup = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         deleteButton = new javax.swing.JButton();
         OKButton = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         changeTeacher = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         mathBox1 = new javax.swing.JCheckBox();
@@ -172,7 +179,7 @@ public class EditWindow extends javax.swing.JFrame {
         saveButton = new javax.swing.JButton();
         changeLesson = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel23 = new javax.swing.JLabel();
         mondayRadioBtn1 = new javax.swing.JRadioButton();
         tuesdayRadioBtn1 = new javax.swing.JRadioButton();
@@ -180,18 +187,18 @@ public class EditWindow extends javax.swing.JFrame {
         thursdayRadioBtn1 = new javax.swing.JRadioButton();
         fridayRadioBtn1 = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<String>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<String>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox8 = new javax.swing.JComboBox<String>();
         edit2Button = new javax.swing.JButton();
         delete2Button = new javax.swing.JButton();
         previewPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<String>();
         jMenuBar1 = new javax.swing.JMenuBar();
         newMenu = new javax.swing.JMenu();
         groupItem1 = new javax.swing.JMenuItem();
@@ -233,61 +240,37 @@ public class EditWindow extends javax.swing.JFrame {
             }
         });
 
-        mathBox.setText("Matematyka");
-        mathBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mathBoxActionPerformed(evt);
-            }
-        });
-
-        polishBox.setText("Język polski");
-
-        englishBox.setText("Język anglieski");
-
-        germanBox.setText("Język niemiecki");
-
-        biologyBox.setText("Biologia");
-
-        chemistryBox.setText("Chemia");
-
-        physicsBox.setText("Fizyka");
-
-        russianBox.setText("Język rosyjski");
-
-        religionBox.setText("Religia");
-
-        ethicsBox.setText("Etyka");
-
-        geographyBox.setText("Geografia");
-        geographyBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                geographyBoxActionPerformed(evt);
-            }
-        });
-
-        edbBox.setText("Edukacja dla bezpieczeństwa");
-
-        peBox.setText("Wychowanie fizyczne");
-
-        historyBox.setText("Historia");
-
-        itBox.setText("Informatyka");
-
-        wosBox.setText("Wiedza o społeczeństwie");
-
-        wdzBoz.setText("Wychowanie do życia w rodzinie");
-
-        artBox.setText("Kultura");
-
-        ppBox.setText("Podstawy przedsiębiorczości");
-
-        italianBox.setText("Język włoski");
-
-        frenchBox.setText("Język francuski");
-
-        spanishBox.setText("Język hiszpański");
-
         jLabel8.setText("ID");
+
+        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox10ActionPerformed(evt);
+            }
+        });
+
+        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox11ActionPerformed(evt);
+            }
+        });
+
+        jComboBox12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox12ActionPerformed(evt);
+            }
+        });
+
+        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox13ActionPerformed(evt);
+            }
+        });
+
+        jComboBox14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout teacherPanelLayout = new javax.swing.GroupLayout(teacherPanel);
         teacherPanel.setLayout(teacherPanelLayout);
@@ -296,36 +279,6 @@ public class EditWindow extends javax.swing.JFrame {
             .addGroup(teacherPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(teacherPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mathBox)
-                            .addComponent(biologyBox)
-                            .addComponent(chemistryBox)
-                            .addComponent(physicsBox)
-                            .addComponent(geographyBox)
-                            .addComponent(itBox)
-                            .addComponent(historyBox))
-                        .addGap(45, 45, 45)
-                        .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(polishBox)
-                            .addComponent(englishBox)
-                            .addComponent(germanBox)
-                            .addComponent(russianBox)
-                            .addComponent(italianBox)
-                            .addComponent(frenchBox)
-                            .addComponent(spanishBox))
-                        .addGap(56, 56, 56)
-                        .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wosBox)
-                            .addComponent(religionBox)
-                            .addComponent(ethicsBox)
-                            .addComponent(edbBox)
-                            .addComponent(peBox)
-                            .addComponent(wdzBoz)
-                            .addComponent(artBox)
-                            .addComponent(ppBox)))
                     .addGroup(teacherPanelLayout.createSequentialGroup()
                         .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(teacherPanelLayout.createSequentialGroup()
@@ -342,8 +295,17 @@ public class EditWindow extends javax.swing.JFrame {
                                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(39, 39, 39)
                         .addComponent(addTeacherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(teacherPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         teacherPanelLayout.setVerticalGroup(
             teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,42 +331,16 @@ public class EditWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mathBox)
-                    .addComponent(polishBox)
-                    .addComponent(religionBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(englishBox)
-                    .addComponent(biologyBox)
-                    .addComponent(ethicsBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(germanBox)
-                    .addComponent(chemistryBox)
-                    .addComponent(edbBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(physicsBox)
-                    .addComponent(russianBox)
-                    .addComponent(peBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(geographyBox)
-                    .addComponent(wdzBoz)
-                    .addComponent(italianBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itBox)
-                    .addComponent(wosBox)
-                    .addComponent(frenchBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(artBox)
-                    .addComponent(historyBox)
-                    .addComponent(spanishBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ppBox)
-                .addContainerGap(142, Short.MAX_VALUE))
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         mainPanel.add(teacherPanel, "teacherPanel");
@@ -417,7 +353,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel7.setText("Wychowawca");
 
-        teacherBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teacherBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         teacherBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teacherBoxActionPerformed(evt);
@@ -510,15 +446,15 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel11.setText("Klasa");
 
-        groupList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        groupList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Sala");
 
-        classList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Nauczyciel");
 
-        teacherList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teacherList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setText("Dzień");
 
@@ -549,7 +485,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel15.setText("Godzina");
 
-        hourList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hourList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         hourList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hourListActionPerformed(evt);
@@ -588,7 +524,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel28.setText("Przedmiot");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -756,7 +692,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel18.setText("Wybierz klasę:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         deleteButton.setText("Usuń");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -774,7 +710,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel19.setText("Wybierz nowego wychowawcę:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout changeGroupLayout = new javax.swing.GroupLayout(changeGroup);
         changeGroup.setLayout(changeGroupLayout);
@@ -821,7 +757,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel20.setText("Wybierz nauczyciela:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Usuń");
 
@@ -1014,7 +950,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel22.setText("Klasa:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Dzień:");
 
@@ -1045,11 +981,11 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel24.setText("Godzina:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel25.setText("Sala:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox7ActionPerformed(evt);
@@ -1058,7 +994,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel26.setText("Nauczyciel:");
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         edit2Button.setText("Edytuj");
         edit2Button.addActionListener(new java.awt.event.ActionListener() {
@@ -1099,7 +1035,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel27.setText("Przedmiot:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -1293,80 +1229,6 @@ public class EditWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_teachersItem1ActionPerformed
 
-    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
-        
-        Connection conn = DataBase.Connection();
-        ResultSet rs;
-        //PreparedStatement pst;
-        Statement stmt;
-        
-        String className = classField.getText();
-        //String nauczyciel = teacherBox.getName();
-        NewID noweId = new NewID();
-        int idklasy = noweId.UstawNumer("kla_id", "klasy");
-
-        String sqlAddClass = "insert into KLASY(KLA_ID, KLA_NAZWA) values \n"
-                + "('" + idklasy + "','"+ className + "' );";
-
-        try{
-            stmt = conn.createStatement();
-            stmt.executeUpdate(sqlAddClass);
-            //stmt.close();
-            
-            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
-            
-        } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-        
-                
-    }//GEN-LAST:event_addClassButtonActionPerformed
-
-    private void teacherBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_teacherBoxActionPerformed
-
-    private void geographyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geographyBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_geographyBoxActionPerformed
-
-    private void mathBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mathBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mathBoxActionPerformed
-
-    private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
-                                                         
-        Connection conn = DataBase.Connection();
-        ResultSet rs;
-        PreparedStatement pst;
-        Statement stmt;
-        
-        String teacherIdS = idField.getText();
-        int teacherId = Integer.parseInt(teacherIdS);
-        String teacherName = nameField.getText();
-        String teacherSurname = lastnameFiled.getText();
-        
-
-       String sqlAddTeacher = "insert into NAUCZYCIEL(NAU_ID, NAU_IMIE, NAU_NAZWISKO) values \n"
-                + "('" + teacherId + "','"+ teacherName + "','"+ teacherSurname + "' );";
-
-        try{
-            stmt = conn.createStatement();
-            // stmt.execute(CreateTableTeacher());
-            stmt.executeUpdate(sqlAddTeacher);
-            stmt.close();
-            
-            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
-            
-        } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-    }//GEN-LAST:event_addTeacherButtonActionPerformed
-
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
-
     private void groupItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupItem2ActionPerformed
         if(evt.getSource() == groupItem2) {
             CardLayout card = (CardLayout)mainPanel.getLayout();
@@ -1507,6 +1369,104 @@ public class EditWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lessonItem2ActionPerformed
 
+    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
+
+        Connection conn = DataBase.Connection();
+        ResultSet rs;
+        //PreparedStatement pst;
+        Statement stmt;
+
+        String className = classField.getText();
+        //String nauczyciel = teacherBox.getName();
+        NewID noweId = new NewID();
+        int idklasy = noweId.UstawNumer("kla_id", "klasy");
+
+        String sqlAddClass = "insert into KLASY(KLA_ID, KLA_NAZWA) values \n"
+        + "('" + idklasy + "','"+ className + "' );";
+
+        try{
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sqlAddClass);
+            //stmt.close();
+
+            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
+
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+    }//GEN-LAST:event_addClassButtonActionPerformed
+
+    private void teacherBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherBoxActionPerformed
+
+    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+        //String comboBox = jComboBox10.addItem("jeden");
+        // JComboBox jComboBox10 = new JComboBox();
+        // jComboBox10.addItem("asdf");
+    }//GEN-LAST:event_jComboBox10ActionPerformed
+
+    private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
+
+        Connection conn = DataBase.Connection();
+        ResultSet rs;
+        PreparedStatement pst;
+        Statement stmt;
+
+        String teacherIdS = idField.getText();
+        int teacherId = Integer.parseInt(teacherIdS);
+        String teacherName = nameField.getText();
+        String teacherSurname = lastnameFiled.getText();
+        
+        
+        Object prz1 = jComboBox10.getSelectedItem();
+        String przedmiot1 = prz1.toString();
+        Object prz2 = jComboBox11.getSelectedItem();
+        String przedmiot2 = prz2.toString();
+        Object prz3 = jComboBox10.getSelectedItem();
+        String przedmiot3 = prz3.toString();
+        Object prz4 = jComboBox10.getSelectedItem();
+        String przedmiot4 = prz4.toString();
+        Object prz5 = jComboBox10.getSelectedItem();
+        String przedmiot5 = prz5.toString();
+
+        String sqlAddTeacher = "insert into NAUCZYCIELE(NAU_ID, NAU_IMIE, NAU_NAZWISKO, PRZ_NAME_1, PRZ_NAME_2, PRZ_NAME_3, PRZ_NAME_4, PRZ_NAME_5) values \n"
+        + "('" + teacherId + "','"+ teacherName + "','" + teacherSurname + "','" + przedmiot1 + "','" + przedmiot2 + "','" + przedmiot3 + "','" + przedmiot4 +  "','" + przedmiot5 +  "' );";
+
+        try{
+            stmt = conn.createStatement();
+            // stmt.execute(CreateTableTeacher());
+            stmt.executeUpdate(sqlAddTeacher);
+            stmt.close();
+
+            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
+
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }//GEN-LAST:event_addTeacherButtonActionPerformed
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox11ActionPerformed
+
+    private void jComboBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox12ActionPerformed
+
+    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox13ActionPerformed
+
+    private void jComboBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1550,14 +1510,11 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JButton addClassButton;
     private javax.swing.JButton addLessonBtn;
     private javax.swing.JButton addTeacherButton;
-    private javax.swing.JCheckBox artBox;
     private javax.swing.JCheckBox artBox1;
-    private javax.swing.JCheckBox biologyBox;
     private javax.swing.JCheckBox biologyBox1;
     private javax.swing.JPanel changeGroup;
     private javax.swing.JPanel changeLesson;
     private javax.swing.JPanel changeTeacher;
-    private javax.swing.JCheckBox chemistryBox;
     private javax.swing.JCheckBox chemistryBox1;
     private javax.swing.JTextField classField;
     private javax.swing.JMenuItem classItem1;
@@ -1567,38 +1524,34 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JPanel cleanPanel;
     private javax.swing.JButton delete2Button;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JCheckBox edbBox;
     private javax.swing.JCheckBox edbBox1;
     private javax.swing.JButton edit2Button;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JCheckBox englishBox;
     private javax.swing.JCheckBox englishBox1;
-    private javax.swing.JCheckBox ethicsBox;
     private javax.swing.JCheckBox ethicsBox1;
-    private javax.swing.JCheckBox frenchBox;
     private javax.swing.JCheckBox frenchBox1;
     private javax.swing.JRadioButton fridayRadioBtn;
     private javax.swing.JRadioButton fridayRadioBtn1;
-    private javax.swing.JCheckBox geographyBox;
     private javax.swing.JCheckBox geographyBox1;
-    private javax.swing.JCheckBox germanBox;
     private javax.swing.JCheckBox germanBox1;
     private javax.swing.JMenuItem groupItem1;
     private javax.swing.JMenuItem groupItem2;
     private javax.swing.JComboBox<String> groupList;
     private javax.swing.JPanel groupPanel;
     private javax.swing.JCheckBox gymCheckBox;
-    private javax.swing.JCheckBox historyBox;
     private javax.swing.JCheckBox historyBox1;
     private javax.swing.JComboBox<String> hourList;
     private javax.swing.JTextField idField;
-    private javax.swing.JCheckBox itBox;
     private javax.swing.JCheckBox itBox1;
     private javax.swing.JCheckBox itCheckBox;
-    private javax.swing.JCheckBox italianBox;
     private javax.swing.JCheckBox italianBox1;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox jComboBox10;
+    private javax.swing.JComboBox jComboBox11;
+    private javax.swing.JComboBox jComboBox12;
+    private javax.swing.JComboBox jComboBox13;
+    private javax.swing.JComboBox jComboBox14;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -1645,26 +1598,18 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem lessonItem2;
     private javax.swing.JPanel lessonPanel;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JCheckBox mathBox;
     private javax.swing.JCheckBox mathBox1;
     private javax.swing.JRadioButton mondayRadioBtn;
     private javax.swing.JRadioButton mondayRadioBtn1;
     private javax.swing.JTextField nameField;
     private javax.swing.JMenu newMenu;
-    private javax.swing.JCheckBox peBox;
-    private javax.swing.JCheckBox physicsBox;
     private javax.swing.JCheckBox physicsBox1;
-    private javax.swing.JCheckBox polishBox;
     private javax.swing.JCheckBox polishBox1;
-    private javax.swing.JCheckBox ppBox;
     private javax.swing.JCheckBox ppBox1;
     private javax.swing.JPanel previewPanel;
     private javax.swing.JPanel previewPanel1;
-    private javax.swing.JCheckBox religionBox;
     private javax.swing.JCheckBox religionBox1;
-    private javax.swing.JCheckBox russianBox;
     private javax.swing.JButton saveButton;
-    private javax.swing.JCheckBox spanishBox;
     private javax.swing.JCheckBox spanishBox1;
     private javax.swing.JComboBox<String> teacherBox;
     private javax.swing.JComboBox<String> teacherList;
@@ -1676,12 +1621,10 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JRadioButton thursdayRadioBtn1;
     private javax.swing.JRadioButton tuesdayRadioBtn;
     private javax.swing.JRadioButton tuesdayRadioBtn1;
-    private javax.swing.JCheckBox wdzBoz;
     private javax.swing.JCheckBox wdzBoz1;
     private javax.swing.JRadioButton wednesdayRadioBtn;
     private javax.swing.JRadioButton wednesdayRadioBtn1;
     private javax.swing.JCheckBox wfBox;
-    private javax.swing.JCheckBox wosBox;
     private javax.swing.JCheckBox wosBox1;
     // End of variables declaration//GEN-END:variables
 }
