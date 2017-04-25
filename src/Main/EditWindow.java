@@ -36,11 +36,13 @@ public class EditWindow extends javax.swing.JFrame {
             card.show(mainPanel,"cleanPanel");
         
             Fillcombo();
+            
     }
     
     private void Fillcombo(){
         try{
             String sql = "select * from przedmioty";
+            
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
@@ -53,6 +55,25 @@ public class EditWindow extends javax.swing.JFrame {
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        
+    }
+    private void Fillcombogroup(){
+        try{
+            String sql = "select * from KLASY";
+            
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String KLA_NAME = rs.getString("KLA_NAZWA");
+                jComboBox2.addItem(KLA_NAME);
+               
+            }
+            
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
     }
 
     /**
@@ -756,8 +777,6 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel18.setText("Wybierz klasę:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         deleteButton.setText("Usuń");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1124,7 +1143,7 @@ public class EditWindow extends javax.swing.JFrame {
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -1346,6 +1365,7 @@ public class EditWindow extends javax.swing.JFrame {
         if(evt.getSource() == groupItem2) {
             CardLayout card = (CardLayout)mainPanel.getLayout();
             card.show(mainPanel,"changeGroup");
+            Fillcombogroup();
         }
     }//GEN-LAST:event_groupItem2ActionPerformed
 
