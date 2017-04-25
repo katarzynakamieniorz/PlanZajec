@@ -1335,7 +1335,32 @@ public class EditWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_mathBoxActionPerformed
 
     private void addTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTeacherButtonActionPerformed
-        // TODO add your handling code here:
+                                                         
+        Connection conn = DataBase.Connection();
+        ResultSet rs;
+        PreparedStatement pst;
+        Statement stmt;
+        
+        String teacherIdS = idField.getText();
+        int teacherId = Integer.parseInt(teacherIdS);
+        String teacherName = nameField.getText();
+        String teacherSurname = lastnameFiled.getText();
+        
+
+       String sqlAddTeacher = "insert into NAUCZYCIEL(NAU_ID, NAU_IMIE, NAU_NAZWISKO) values \n"
+                + "('" + teacherId + "','"+ teacherName + "','"+ teacherSurname + "' );";
+
+        try{
+            stmt = conn.createStatement();
+            // stmt.execute(CreateTableTeacher());
+            stmt.executeUpdate(sqlAddTeacher);
+            stmt.close();
+            
+            JOptionPane.showMessageDialog(null,"Dodano rekord do bazy");
+            
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
     }//GEN-LAST:event_addTeacherButtonActionPerformed
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed

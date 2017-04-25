@@ -117,5 +117,21 @@ public class DataBase {
             System.out.println(e.getMessage());
            }
      }
+     
+      public static void CreateTableTeacher(){
+         String createTableNauczyciel = "CREATE TABLE IF NOT EXISTS NAUCZYCIEL (\n"
+                 +"NAU_ID integer primary key not null \n"
+                 +"NAU_IMIE text \n"
+                 +"NAU_NAZWISKO text \n;";
+         
+         try(Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement()){
+             stmt.execute(createTableNauczyciel);
+             stmt.close();
+         } catch(SQLException e){
+             System.out.println(e.getMessage());
+         }
+         
+     }
 }
 
