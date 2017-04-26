@@ -35,8 +35,6 @@ public class DataBase {
      }
      public static void CreateTableLogin()
      {
-          
-    
          String sql = "CREATE TABLE IF NOT EXISTS Login (\n"
                 + "	id integer PRIMARY KEY,\n"
                 + "	name text NOT NULL UNIQUE,\n"
@@ -92,9 +90,11 @@ public class DataBase {
                  +"kla_wychowawca integer unique);";
          
          try(Connection conn = DriverManager.getConnection(url);
-            Statement stmt = conn.createStatement()){
-             stmt.execute(createTableKlasy);
-            // stmt.close();
+            Statement stmt = conn.createStatement()) {
+             
+                stmt.execute(createTableKlasy);
+                //stmt.close();
+                
          } catch(SQLException e){
              System.out.println(e.getMessage());
          }
@@ -109,10 +109,8 @@ public class DataBase {
                 + ");";
          try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement())
-           {
-            
+           { 
             stmt.execute(sql);
-             
            }
            catch (SQLException e) 
            {
