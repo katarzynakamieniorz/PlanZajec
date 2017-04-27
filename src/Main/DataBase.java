@@ -139,6 +139,32 @@ public class DataBase {
          
      }
       
-     
+    /**
+     *
+     */
+    public static void CreateTableSale()
+     {
+         String sql = "CREATE TABLE IF NOT EXISTS Sale (\n"
+                + "	sal_id integer PRIMARY KEY NOT NULL UNIQUE,\n"
+                + "	sal_numer text NOT NULL UNIQUE,\n"
+                + "     sal_rodzaj integer NOT NULL \n"
+                + ");";
+      
+          try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement())
+           {
+            
+            stmt.execute(sql);
+            // stmt.close();
+           }
+           catch (SQLException e) 
+           {
+               
+            System.out.println(e.getMessage());
+           }
+          
+    }
+    
+      
 }
 

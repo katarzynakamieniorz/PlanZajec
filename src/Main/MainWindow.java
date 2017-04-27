@@ -21,9 +21,12 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         Connection();
         CreateTableLogin();
+        CreateTableSale();
+        
         InsertIntoLogin("Admin1","Haslo1");
         InsertIntoLogin("Admin2","Haslo2");
         InsertIntoLogin("Admin3","Haslo3");
+        //CreateTableSale();
         
         
     }

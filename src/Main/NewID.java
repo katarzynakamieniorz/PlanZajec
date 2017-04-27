@@ -39,6 +39,7 @@ public class NewID {
             }
             number2 = number1 + 1;
             pst.close();
+            rs.close();
         } catch(SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         } 
