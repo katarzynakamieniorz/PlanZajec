@@ -972,7 +972,7 @@ private void CleanEditGroupItems()
 
         teacher.setText("Wybierz nauczyciela:");
 
-        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
         teacherscombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 teacherscomboItemStateChanged(evt);
@@ -1539,7 +1539,10 @@ private void CleanEditGroupItems()
                            pst.setString(1,textid.getText());
                            pst.execute();
                            JOptionPane.showMessageDialog(null, "Usunięto ! ");
+                           int index = classcombo.getSelectedIndex();
+                           classcombo.removeItemAt(index);
                            CleanEditGroupItems();
+                         
                             
                             }           
                         catch (SQLException e){}
@@ -1901,7 +1904,9 @@ private void CleanEditGroupItems()
                            pst.setString(1,idtextfield.getText());
                            pst.execute();
                            JOptionPane.showMessageDialog(null, "Usunięto ! ");
-                            CleanEditTeachersItems();
+                           int index = teacherscombo.getSelectedIndex();
+                            teacherscombo.removeItemAt(index); 
+                           CleanEditTeachersItems();
                             
                             }           
                         catch (SQLException e){}
