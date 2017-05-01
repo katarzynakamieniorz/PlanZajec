@@ -171,7 +171,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="371" max="32767" attributes="0"/>
+                      <EmptySpace pref="556" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -357,7 +357,7 @@
                               <Component id="addClassButton" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace pref="557" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -377,7 +377,7 @@
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="teacherBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="353" max="32767" attributes="0"/>
+                      <EmptySpace pref="366" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -433,12 +433,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="804" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="992" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="458" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="477" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -456,7 +456,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="545" max="32767" attributes="0"/>
+                      <EmptySpace pref="686" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -465,7 +465,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="433" max="32767" attributes="0"/>
+                      <EmptySpace pref="448" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -533,7 +533,7 @@
                                               <Component id="hourList" min="-2" pref="146" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -595,7 +595,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="addLessonBtn" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="98" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -831,9 +831,9 @@
                           <Component id="jLabel16" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
                           <Component id="normalCheckBox" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="121" max="32767" attributes="0"/>
                       <Component id="addClassBtn" min="-2" pref="133" max="-2" attributes="0"/>
-                      <EmptySpace pref="324" max="32767" attributes="0"/>
+                      <EmptySpace pref="416" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -854,7 +854,7 @@
                       <Component id="gymCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="itCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="287" max="32767" attributes="0"/>
+                      <EmptySpace pref="296" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -915,7 +915,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="changeGroup">
+        <Container class="javax.swing.JPanel" name="idtext">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="changeGroup"/>
@@ -925,30 +925,36 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel18" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="classcombo" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" min="-2" pref="188" max="-2" attributes="0"/>
+                                  <Component id="comboteacher" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" min="-2" pref="194" max="-2" attributes="0"/>
+                                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="classtext" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <Component id="textid" min="-2" pref="106" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" min="-2" pref="135" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="deleteButton" alignment="0" pref="97" max="32767" attributes="0"/>
-                                  <Component id="OKButton" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jLabel19" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="Zapisz" min="-2" pref="97" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="anulujbutton" min="-2" pref="97" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="deleteButton" min="-2" pref="97" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="400" max="32767" attributes="0"/>
+                      <EmptySpace pref="565" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -958,18 +964,28 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteButton" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="classcombo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="OKButton" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textid" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="295" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="classtext" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="comboteacher" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="deleteButton" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="anulujbutton" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="Zapisz" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="162" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -980,12 +996,18 @@
                 <Property name="text" type="java.lang.String" value="Wybierz klas&#x119;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="classcombo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Klasa"/>
+                  </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="classcomboItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classcomboActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -998,12 +1020,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="OKButton">
+            <Component class="javax.swing.JButton" name="Zapisz">
               <Properties>
-                <Property name="text" type="java.lang.String" value="OK"/>
+                <Property name="text" type="java.lang.String" value="Zapisz"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OKButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZapiszActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -1011,14 +1033,39 @@
                 <Property name="text" type="java.lang.String" value="Wybierz nowego wychowawc&#x119;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JTextField" name="textid">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textidActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="anulujbutton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Anuluj"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anulujbuttonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="classtext">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID klasy"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel29">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Klasa"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comboteacher">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Nauczyciel"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1042,52 +1089,49 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jComboBox4" min="-2" pref="188" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" pref="97" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="saveButton" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="polishBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="englishBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="germanBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="italianBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="frenchBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="spanishBox1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="historyBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="biologyBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chemistryBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="physicsBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="geographyBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="mathBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="itBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ppBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="wdzBoz1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="religionBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ethicsBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="edbBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="wosBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="artBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="wfBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jLabel21" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="243" max="32767" attributes="0"/>
+                              <Component id="teacher" min="-2" pref="155" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel20" min="-2" pref="155" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="saveButton" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="anulujbtn" min="-2" pref="113" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="deletebutton" min="-2" pref="109" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="sub5" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="sub4" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="sub3" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="sub2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="sub1" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="teacherscombo" alignment="0" pref="188" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="subject" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="surname" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="name" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nametext" pref="133" max="32767" attributes="0"/>
+                                      <Component id="surnametext" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="idtextfield" min="-2" pref="70" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="286" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1097,227 +1141,185 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                      <Component id="teacher" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="teacherscombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="idtextfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="mathBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="polishBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="wosBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="subject" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chemistryBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="englishBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="artBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sub1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="surnametext" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="physicsBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="germanBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="wfBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="sub2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="sub3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="sub4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="sub5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="deletebutton" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="saveButton" alignment="1" pref="48" max="32767" attributes="0"/>
+                                  <Component id="anulujbtn" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="nametext" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="surname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="geographyBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="italianBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="edbBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="biologyBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="frenchBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="religionBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="spanishBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ethicsBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ppBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="wdzBoz1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="historyBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="saveButton" min="-2" pref="48" max="-2" attributes="0"/>
-                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <EmptySpace pref="131" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel20">
+            <Component class="javax.swing.JLabel" name="teacher">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Wybierz nauczyciela:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox4">
+            <Component class="javax.swing.JComboBox" name="teacherscombo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value=""/>
                   </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="teacherscomboItemStateChanged"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherscomboMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherscomboMouseEntered"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="teacherscomboMousePressed"/>
+                <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="teacherscomboComponentShown"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teacherscomboActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="deletebutton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Usu&#x144;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletebuttonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="subject">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zmie&#x144; przedmioty:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="saveButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="sub1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sub1ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="sub2">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JComboBox" name="sub3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usu&#x144;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel21">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Przydziel przedmiot:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="mathBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Matematyka"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mathBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sub3ActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="polishBox1">
+            <Component class="javax.swing.JComboBox" name="sub4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk polski"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="sub5">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="nametext">
+            </Component>
+            <Component class="javax.swing.JTextField" name="surnametext">
+            </Component>
+            <Component class="javax.swing.JLabel" name="name">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Imi&#x119;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="englishBox1">
+            <Component class="javax.swing.JLabel" name="surname">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk anglieski"/>
+                <Property name="text" type="java.lang.String" value="Nazwisko"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="germanBox1">
+            <Component class="javax.swing.JButton" name="anulujbtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk niemiecki"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="biologyBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Biologia"/>
+                <Property name="text" type="java.lang.String" value="Anuluj"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="biologyBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anulujbtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="italianBox1">
+            <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk w&#x142;oski"/>
+                <Property name="text" type="java.lang.String" value="ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="frenchBox1">
+            <Component class="javax.swing.JTextField" name="idtextfield">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk francuski"/>
+                <Property name="editable" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="frenchBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idtextfieldActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="spanishBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="J&#x119;zyk hiszpa&#x144;ski"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="chemistryBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Chemia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="physicsBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Fizyka"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="physicsBox1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="geographyBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Geografia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="geographyBox1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="religionBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Religia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="religionBox1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ethicsBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Etyka"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="wdzBoz1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wychowanie do &#x17c;ycia w rodzinie"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="edbBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Edukacja dla bezpiecze&#x144;stwa"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="artBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kultura"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ppBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Podstawy przedsi&#x119;biorczo&#x15b;ci"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="itBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Informatyka"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="wosBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wiedza o spo&#x142;ecze&#x144;stwie"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wosBox1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="historyBox1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Historia"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="wfBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Wychowanie fizyczne"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wfBoxActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="saveButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Zapisz"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -1386,7 +1388,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="previewPanel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="88" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">

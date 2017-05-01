@@ -10,12 +10,16 @@ import static Main.DataBase.CreateTableSale;
 import static Main.DataBase.url;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -44,6 +48,8 @@ public class EditWindow extends javax.swing.JFrame {
         Fillcombo();
         FillCombo2();
         FillComboTeachers();
+        FillComboEditTeachers();
+        Fillgroup();        
     }
 
     private void Fillcombo() {
@@ -59,28 +65,28 @@ public class EditWindow extends javax.swing.JFrame {
                 jComboBox1.addItem(Prz_NAME);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
     }
 
-    private void Fillcombogroup() {
+    private void Fillgroup()
+    {
         try {
-            String sql = "select * from KLASY";
-
-            pst = conn.prepareStatement(sql);
+            String group = "select * from klasy order by kla_nazwa ASC";
+            pst = conn.prepareStatement(group);
             rs = pst.executeQuery();
-
-            while (rs.next()) {
-                String KLA_NAME = rs.getString("KLA_NAZWA");
-                jComboBox2.addItem(KLA_NAME);
-
+            
+            while(rs.next()) {
+                String nazwa = rs.getString("kla_nazwa");
+               
+                classcombo.addItem(nazwa);
+                
             }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } 
 
     }
 
@@ -99,6 +105,12 @@ public class EditWindow extends javax.swing.JFrame {
                 jComboBox12.addItem(name);
                 jComboBox13.addItem(name);
                 jComboBox14.addItem(name);
+                sub1.addItem(name);
+                sub2.addItem(name);
+                sub3.addItem(name);
+                sub4.addItem(name);
+                sub5.addItem(name);
+                
             }
 
         } catch (Exception e) {
@@ -108,7 +120,7 @@ public class EditWindow extends javax.swing.JFrame {
     
     private void FillComboTeachers() {
         try {
-            String wyszukajNauczycieli = "select * from nauczyciele";
+            String wyszukajNauczycieli = "select * from nauczyciele order by Nau_Nazwisko ASC";
             pst = conn.prepareStatement(wyszukajNauczycieli);
             rs = pst.executeQuery();
             
@@ -117,12 +129,118 @@ public class EditWindow extends javax.swing.JFrame {
                 String imie = rs.getString("nau_imie");
                 String imieNazwisko = nazwisko + " " + imie;
                 teacherBox.addItem(imieNazwisko);
+               
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+    private void FillEditGroupItems()
+{
 
+     try
+    {
+        String classname = (String)classcombo.getSelectedItem();
+        String sqlgroup = "Select * from klasy where kla_nazwa = '"+classname+"'";
+         pst = conn.prepareStatement(sqlgroup);
+            rs = pst.executeQuery();
+            
+        while(rs.next()) {
+                int ID = rs.getInt("kla_id");
+                String idstr = Integer.toString(ID);
+                String nameclass = rs.getString("kla_nazwa");
+                int IDwych = rs.getInt("kla_wychowawca");
+                String idwych = Integer.toString(IDwych);
+                
+                textid.setText(idstr);
+                classtext.setText(nameclass);
+               
+                
+                
+                
+        } 
+    }
+     catch (SQLException ex) {
+            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+     
+private void FillEditTeachersItems()
+{
+    try
+    {
+        String NameSurname = (String)teacherscombo.getSelectedItem();
+        String sql23 = "Select * from nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = '"+NameSurname+"'";
+         pst = conn.prepareStatement(sql23);
+            rs = pst.executeQuery();
+            
+        while(rs.next()) {
+                int ID = rs.getInt("Nau_Id");
+                String idstr = Integer.toString(ID);
+                String nameteacher = rs.getString("Nau_Imie");
+                String surnameteacher = rs.getString("Nau_Nazwisko");
+                String subname1 = rs.getString("Prz_NAME_1");
+                String subname2 = rs.getString("Prz_NAME_2");
+                String subname3 = rs.getString("Prz_NAME_3");
+                String subname4 = rs.getString("Prz_NAME_4");
+                String subname5 = rs.getString("Prz_NAME_5");
+                idtextfield.setText(idstr);
+                nametext.setText(nameteacher);
+                surnametext.setText(surnameteacher);
+                sub1.setSelectedItem(subname1);
+                sub2.setSelectedItem(subname2);
+                sub3.setSelectedItem(subname3);
+                sub4.setSelectedItem(subname4);
+                sub5.setSelectedItem(subname5);
+                
+                
+        } 
+    }        
+    
+      catch (SQLException ex) {
+            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+private void CleanEditTeachersItems()
+{
+     idtextfield.setText("");
+            nametext.setText("");
+            surnametext.setText("");
+            teacherscombo.setSelectedIndex(0);
+            sub1.setSelectedIndex(0);
+            sub2.setSelectedIndex(0);
+            sub3.setSelectedIndex(0);
+            sub4.setSelectedIndex(0);
+            sub5.setSelectedIndex(0);
+    
+}
+private void CleanEditGroupItems()
+{
+     textid.setText("");
+            classtext.setText("");
+            classcombo.setSelectedIndex(0);
+            comboteacher.setSelectedIndex(0);
+            
+    
+}
+ private void FillComboEditTeachers() {
+        try {
+            String wyszukajNauczycieli = "select * from nauczyciele order by Nau_Nazwisko ASC";
+            pst = conn.prepareStatement(wyszukajNauczycieli);
+            rs = pst.executeQuery();
+            
+            while(rs.next()) {
+                String nazwisko = rs.getString("nau_nazwisko");
+                String imie = rs.getString("nau_imie");
+                String imieNazwisko = nazwisko + " " + imie;
+                teacherscombo.addItem(imieNazwisko);
+                comboteacher.addItem(imieNazwisko);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,7 +272,7 @@ public class EditWindow extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<String>();
+        teacherBox = new javax.swing.JComboBox<>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -162,11 +280,11 @@ public class EditWindow extends javax.swing.JFrame {
         lessonPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        groupList = new javax.swing.JComboBox<String>();
+        groupList = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        classList = new javax.swing.JComboBox<String>();
+        classList = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        teacherList = new javax.swing.JComboBox<String>();
+        teacherList = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         mondayRadioBtn = new javax.swing.JRadioButton();
         tuesdayRadioBtn = new javax.swing.JRadioButton();
@@ -174,13 +292,13 @@ public class EditWindow extends javax.swing.JFrame {
         thursdayRadioBtn = new javax.swing.JRadioButton();
         fridayRadioBtn = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        hourList = new javax.swing.JComboBox<String>();
+        hourList = new javax.swing.JComboBox<>();
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -189,43 +307,39 @@ public class EditWindow extends javax.swing.JFrame {
         itCheckBox = new javax.swing.JCheckBox();
         addClassBtn = new javax.swing.JButton();
         normalCheckBox = new javax.swing.JCheckBox();
-        changeGroup = new javax.swing.JPanel();
+        idtext = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        classcombo = new javax.swing.JComboBox<>();
         deleteButton = new javax.swing.JButton();
-        OKButton = new javax.swing.JButton();
+        Zapisz = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<String>();
-        changeTeacher = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<String>();
-        jButton1 = new javax.swing.JButton();
+        textid = new javax.swing.JTextField();
+        anulujbutton = new javax.swing.JButton();
+        classtext = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        mathBox1 = new javax.swing.JCheckBox();
-        polishBox1 = new javax.swing.JCheckBox();
-        englishBox1 = new javax.swing.JCheckBox();
-        germanBox1 = new javax.swing.JCheckBox();
-        biologyBox1 = new javax.swing.JCheckBox();
-        italianBox1 = new javax.swing.JCheckBox();
-        frenchBox1 = new javax.swing.JCheckBox();
-        spanishBox1 = new javax.swing.JCheckBox();
-        chemistryBox1 = new javax.swing.JCheckBox();
-        physicsBox1 = new javax.swing.JCheckBox();
-        geographyBox1 = new javax.swing.JCheckBox();
-        religionBox1 = new javax.swing.JCheckBox();
-        ethicsBox1 = new javax.swing.JCheckBox();
-        wdzBoz1 = new javax.swing.JCheckBox();
-        edbBox1 = new javax.swing.JCheckBox();
-        artBox1 = new javax.swing.JCheckBox();
-        ppBox1 = new javax.swing.JCheckBox();
-        itBox1 = new javax.swing.JCheckBox();
-        wosBox1 = new javax.swing.JCheckBox();
-        historyBox1 = new javax.swing.JCheckBox();
-        wfBox = new javax.swing.JCheckBox();
+        jLabel29 = new javax.swing.JLabel();
+        comboteacher = new javax.swing.JComboBox<>();
+        changeTeacher = new javax.swing.JPanel();
+        teacher = new javax.swing.JLabel();
+        teacherscombo = new javax.swing.JComboBox<>();
+        deletebutton = new javax.swing.JButton();
+        subject = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
+        sub1 = new javax.swing.JComboBox<>();
+        sub2 = new javax.swing.JComboBox<>();
+        sub3 = new javax.swing.JComboBox<>();
+        sub4 = new javax.swing.JComboBox<>();
+        sub5 = new javax.swing.JComboBox<>();
+        nametext = new javax.swing.JTextField();
+        surnametext = new javax.swing.JTextField();
+        name = new javax.swing.JLabel();
+        surname = new javax.swing.JLabel();
+        anulujbtn = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        idtextfield = new javax.swing.JTextField();
         changeLesson = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         mondayRadioBtn1 = new javax.swing.JRadioButton();
         tuesdayRadioBtn1 = new javax.swing.JRadioButton();
@@ -233,18 +347,18 @@ public class EditWindow extends javax.swing.JFrame {
         thursdayRadioBtn1 = new javax.swing.JRadioButton();
         fridayRadioBtn1 = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<String>();
+        jComboBox6 = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<String>();
+        jComboBox7 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<String>();
+        jComboBox8 = new javax.swing.JComboBox<>();
         edit2Button = new javax.swing.JButton();
         delete2Button = new javax.swing.JButton();
         previewPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<String>();
+        jComboBox9 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         newMenu = new javax.swing.JMenu();
         groupItem1 = new javax.swing.JMenuItem();
@@ -351,7 +465,7 @@ public class EditWindow extends javax.swing.JFrame {
                             .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
         teacherPanelLayout.setVerticalGroup(
             teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,7 +546,7 @@ public class EditWindow extends javax.swing.JFrame {
                                 .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58)
                         .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(557, Short.MAX_VALUE))
         );
         groupPanelLayout.setVerticalGroup(
             groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +562,7 @@ public class EditWindow extends javax.swing.JFrame {
                 .addGroup(groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         mainPanel.add(groupPanel, "groupPanel");
@@ -457,11 +571,11 @@ public class EditWindow extends javax.swing.JFrame {
         cleanPanel.setLayout(cleanPanelLayout);
         cleanPanelLayout.setHorizontalGroup(
             cleanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 804, Short.MAX_VALUE)
+            .addGap(0, 992, Short.MAX_VALUE)
         );
         cleanPanelLayout.setVerticalGroup(
             cleanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
+            .addGap(0, 477, Short.MAX_VALUE)
         );
 
         mainPanel.add(cleanPanel, "cleanPanel");
@@ -475,14 +589,14 @@ public class EditWindow extends javax.swing.JFrame {
             .addGroup(teacherPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addContainerGap(686, Short.MAX_VALUE))
         );
         teacherPanel2Layout.setVerticalGroup(
             teacherPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(teacherPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(433, Short.MAX_VALUE))
+                .addContainerGap(448, Short.MAX_VALUE))
         );
 
         mainPanel.add(teacherPanel2, "teacherPanel2");
@@ -491,15 +605,15 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel11.setText("Klasa");
 
-        groupList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        groupList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Sala");
 
-        classList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Nauczyciel");
 
-        teacherList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teacherList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setText("Dzień");
 
@@ -530,7 +644,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel15.setText("Godzina");
 
-        hourList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hourList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         hourList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hourListActionPerformed(evt);
@@ -569,7 +683,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel28.setText("Przedmiot");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -616,7 +730,7 @@ public class EditWindow extends javax.swing.JFrame {
                                         .addComponent(jLabel15)
                                         .addGap(33, 33, 33)
                                         .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 42, Short.MAX_VALUE)))
+                                .addGap(0, 224, Short.MAX_VALUE)))
                         .addGap(42, 42, 42)
                         .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -664,7 +778,7 @@ public class EditWindow extends javax.swing.JFrame {
                     .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addGap(0, 98, Short.MAX_VALUE))
         );
 
         mainPanel.add(lessonPanel, "lessonPanel");
@@ -723,9 +837,9 @@ public class EditWindow extends javax.swing.JFrame {
                         .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(normalCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -743,12 +857,24 @@ public class EditWindow extends javax.swing.JFrame {
                 .addComponent(gymCheckBox)
                 .addGap(7, 7, 7)
                 .addComponent(itCheckBox)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         mainPanel.add(classPanel, "classPanel");
 
         jLabel18.setText("Wybierz klasę:");
+
+        classcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Klasa" }));
+        classcombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                classcomboItemStateChanged(evt);
+            }
+        });
+        classcombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classcomboActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Usuń");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -757,151 +883,170 @@ public class EditWindow extends javax.swing.JFrame {
             }
         });
 
-        OKButton.setText("OK");
-        OKButton.addActionListener(new java.awt.event.ActionListener() {
+        Zapisz.setText("Zapisz");
+        Zapisz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKButtonActionPerformed(evt);
+                ZapiszActionPerformed(evt);
             }
         });
 
         jLabel19.setText("Wybierz nowego wychowawcę:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        textid.setEditable(false);
+        textid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textidActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout changeGroupLayout = new javax.swing.GroupLayout(changeGroup);
-        changeGroup.setLayout(changeGroupLayout);
-        changeGroupLayout.setHorizontalGroup(
-            changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(changeGroupLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(changeGroupLayout.createSequentialGroup()
-                        .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(changeGroupLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(changeGroupLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(65, 65, 65)
-                        .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                            .addComponent(OKButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(400, Short.MAX_VALUE))
+        anulujbutton.setText("Anuluj");
+        anulujbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anulujbuttonActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("ID klasy");
+
+        jLabel29.setText("Klasa");
+
+        comboteacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
+
+        javax.swing.GroupLayout idtextLayout = new javax.swing.GroupLayout(idtext);
+        idtext.setLayout(idtextLayout);
+        idtextLayout.setHorizontalGroup(
+            idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(idtextLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(idtextLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(classcombo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboteacher, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(idtextLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addGap(42, 42, 42)
+                                .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(classtext, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textid, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(idtextLayout.createSequentialGroup()
+                        .addComponent(Zapisz, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(anulujbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
-        changeGroupLayout.setVerticalGroup(
-            changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(changeGroupLayout.createSequentialGroup()
+        idtextLayout.setVerticalGroup(
+            idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(idtextLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(classcombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(textid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addGap(14, 14, 14)
                 .addComponent(jLabel19)
-                .addGap(12, 12, 12)
-                .addGroup(changeGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(comboteacher, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(idtextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anulujbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Zapisz, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
-        mainPanel.add(changeGroup, "changeGroup");
+        mainPanel.add(idtext, "changeGroup");
 
-        jLabel20.setText("Wybierz nauczyciela:");
+        teacher.setText("Wybierz nauczyciela:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setText("Usuń");
-
-        jLabel21.setText("Przydziel przedmiot:");
-
-        mathBox1.setText("Matematyka");
-        mathBox1.addActionListener(new java.awt.event.ActionListener() {
+        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        teacherscombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                teacherscomboItemStateChanged(evt);
+            }
+        });
+        teacherscombo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                teacherscomboMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teacherscomboMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                teacherscomboMousePressed(evt);
+            }
+        });
+        teacherscombo.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                teacherscomboComponentShown(evt);
+            }
+        });
+        teacherscombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mathBox1ActionPerformed(evt);
+                teacherscomboActionPerformed(evt);
             }
         });
 
-        polishBox1.setText("Język polski");
-
-        englishBox1.setText("Język anglieski");
-
-        germanBox1.setText("Język niemiecki");
-
-        biologyBox1.setText("Biologia");
-        biologyBox1.addActionListener(new java.awt.event.ActionListener() {
+        deletebutton.setText("Usuń");
+        deletebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                biologyBox1ActionPerformed(evt);
+                deletebuttonActionPerformed(evt);
             }
         });
 
-        italianBox1.setText("Język włoski");
-
-        frenchBox1.setText("Język francuski");
-        frenchBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frenchBox1ActionPerformed(evt);
-            }
-        });
-
-        spanishBox1.setText("Język hiszpański");
-
-        chemistryBox1.setText("Chemia");
-
-        physicsBox1.setText("Fizyka");
-        physicsBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                physicsBox1ActionPerformed(evt);
-            }
-        });
-
-        geographyBox1.setText("Geografia");
-        geographyBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                geographyBox1ActionPerformed(evt);
-            }
-        });
-
-        religionBox1.setText("Religia");
-        religionBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                religionBox1ActionPerformed(evt);
-            }
-        });
-
-        ethicsBox1.setText("Etyka");
-
-        wdzBoz1.setText("Wychowanie do życia w rodzinie");
-
-        edbBox1.setText("Edukacja dla bezpieczeństwa");
-
-        artBox1.setText("Kultura");
-
-        ppBox1.setText("Podstawy przedsiębiorczości");
-
-        itBox1.setText("Informatyka");
-
-        wosBox1.setText("Wiedza o społeczeństwie");
-        wosBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wosBox1ActionPerformed(evt);
-            }
-        });
-
-        historyBox1.setText("Historia");
-
-        wfBox.setText("Wychowanie fizyczne");
-        wfBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wfBoxActionPerformed(evt);
-            }
-        });
+        subject.setText("Zmień przedmioty:");
 
         saveButton.setText("Zapisz");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        sub1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub1ActionPerformed(evt);
+            }
+        });
+
+        sub3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sub3ActionPerformed(evt);
+            }
+        });
+
+        name.setText("Imię");
+
+        surname.setText("Nazwisko");
+
+        anulujbtn.setText("Anuluj");
+        anulujbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anulujbtnActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("ID");
+
+        idtextfield.setEditable(false);
+        idtextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idtextfieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout changeTeacherLayout = new javax.swing.GroupLayout(changeTeacher);
         changeTeacher.setLayout(changeTeacherLayout);
@@ -911,102 +1056,84 @@ public class EditWindow extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(changeTeacherLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(changeTeacherLayout.createSequentialGroup()
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(133, 133, 133)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(changeTeacherLayout.createSequentialGroup()
-                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(polishBox1)
-                                    .addComponent(englishBox1)
-                                    .addComponent(germanBox1)
-                                    .addComponent(italianBox1)
-                                    .addComponent(frenchBox1)
-                                    .addComponent(spanishBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(historyBox1))
-                                .addGap(54, 54, 54)
-                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(biologyBox1)
-                                    .addComponent(chemistryBox1)
-                                    .addComponent(physicsBox1)
-                                    .addComponent(geographyBox1)
-                                    .addComponent(mathBox1)
-                                    .addComponent(itBox1)
-                                    .addComponent(ppBox1))
-                                .addGap(30, 30, 30)
-                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(wdzBoz1)
-                                    .addComponent(religionBox1)
-                                    .addComponent(ethicsBox1)
-                                    .addComponent(edbBox1)
-                                    .addComponent(wosBox1)
-                                    .addComponent(artBox1)
-                                    .addComponent(wfBox)))
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 243, Short.MAX_VALUE))
+                        .addComponent(teacher, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(changeTeacherLayout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
+                        .addGap(2, 2, 2)
+                        .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(changeTeacherLayout.createSequentialGroup()
+                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(anulujbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deletebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 142, Short.MAX_VALUE))
+                            .addGroup(changeTeacherLayout.createSequentialGroup()
+                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(sub5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sub4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sub3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sub2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sub1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(teacherscombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 188, Short.MAX_VALUE))
+                                    .addComponent(subject, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(surname, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(18, 18, 18)
+                        .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nametext, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                .addComponent(surnametext))
+                            .addComponent(idtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(286, Short.MAX_VALUE))))
         );
         changeTeacherLayout.setVerticalGroup(
             changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(changeTeacherLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel20)
+                .addComponent(teacher)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(teacherscombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(idtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel21)
-                .addGap(14, 14, 14)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mathBox1)
-                    .addComponent(polishBox1)
-                    .addComponent(wosBox1))
+                .addComponent(subject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chemistryBox1)
-                    .addComponent(englishBox1)
-                    .addComponent(artBox1))
+                    .addComponent(sub1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surnametext, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(physicsBox1)
-                    .addComponent(germanBox1)
-                    .addComponent(wfBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(geographyBox1)
-                    .addComponent(italianBox1)
-                    .addComponent(edbBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(biologyBox1)
-                    .addComponent(frenchBox1)
-                    .addComponent(religionBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spanishBox1)
-                    .addComponent(itBox1)
-                    .addComponent(ethicsBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ppBox1)
-                    .addComponent(wdzBoz1)
-                    .addComponent(historyBox1))
-                .addGap(18, 18, 18)
-                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(changeTeacherLayout.createSequentialGroup()
+                        .addComponent(sub2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sub3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sub4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sub5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(deletebutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(saveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                            .addComponent(anulujbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(changeTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nametext, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(surname)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         mainPanel.add(changeTeacher, "changeTeacher");
 
         jLabel22.setText("Klasa:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Dzień:");
 
@@ -1037,11 +1164,11 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel24.setText("Godzina:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel25.setText("Sala:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox7ActionPerformed(evt);
@@ -1050,7 +1177,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel26.setText("Nauczyciel:");
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         edit2Button.setText("Edytuj");
         edit2Button.addActionListener(new java.awt.event.ActionListener() {
@@ -1091,7 +1218,7 @@ public class EditWindow extends javax.swing.JFrame {
 
         jLabel27.setText("Przedmiot:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -1116,7 +1243,7 @@ public class EditWindow extends javax.swing.JFrame {
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -1146,7 +1273,7 @@ public class EditWindow extends javax.swing.JFrame {
                 .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addComponent(previewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 69, Short.MAX_VALUE))
+                        .addGap(0, 88, Short.MAX_VALUE))
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
@@ -1289,7 +1416,8 @@ public class EditWindow extends javax.swing.JFrame {
         if (evt.getSource() == groupItem2) {
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "changeGroup");
-            Fillcombogroup();
+            
+            
         }
     }//GEN-LAST:event_groupItem2ActionPerformed
 
@@ -1392,44 +1520,98 @@ public class EditWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_classItem1ActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
+    
+        if(!"".equals(textid.getText()))
+             {
+                int p= JOptionPane.showConfirmDialog(null,"Czy na pewno chcesz usunąć rekord?","usun",JOptionPane.YES_NO_OPTION);
+          
+                 if(p == 0) 
+                    
+                    {
+             
+                       String sql = "delete from klasy where kla_id=?'";
+                            
+                        try
+                           
+                            {
+                     
+                           pst=conn.prepareStatement(sql);
+                           pst.setString(1,textid.getText());
+                           pst.execute();
+                           JOptionPane.showMessageDialog(null, "Usunięto ! ");
+                           CleanEditGroupItems();
+                            
+                            }           
+                        catch (SQLException e){}
+                        finally 
+                        {
+                                 try
+                                 {
+                                    rs.close();
+                                    pst.close();
+                                 }
+                                catch(SQLException e){}
+
+                         }
+                    }
+                else
+                    {
+                    CleanEditGroupItems();
+                    }
+            }       
+         else
+            {
+             JOptionPane.showMessageDialog(null, "Wybierz grupę do usunięcia !");
+             CleanEditGroupItems();
+             }
+                
+       
+      
+         
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OKButtonActionPerformed
+    private void ZapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZapiszActionPerformed
 
-    private void mathBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mathBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mathBox1ActionPerformed
+        String NameSurname = (String)comboteacher.getSelectedItem(); 
+        
+        if("Nauczyciel".equals(NameSurname))
+                {
+                    JOptionPane.showMessageDialog(null, "Wybierz nowego nauczyciela!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+        else
+        {
+              String nameclass = classtext.getText();
+                String Id = textid.getText();
+                int id = Integer.parseInt(Id);
+                
+                try {
+                   String sql1 = "Select * from nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = '"+NameSurname+"'";
+                     pst = conn.prepareStatement(sql1);
+                     rs = pst.executeQuery();
+                    int ID = rs.getInt("nau_id");
+                     pst.close();
+                  String sql2 = "update klasy set kla_nazwa = '"+nameclass+"', kla_wychowawca = "+ID+"  where kla_id = '"+Id+"'";
+                  Statement stmt  = conn.createStatement();
+                  stmt.execute(sql2);
+                  stmt.close();
 
-    private void biologyBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologyBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_biologyBox1ActionPerformed
-
-    private void frenchBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frenchBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_frenchBox1ActionPerformed
-
-    private void physicsBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicsBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_physicsBox1ActionPerformed
-
-    private void geographyBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geographyBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_geographyBox1ActionPerformed
-
-    private void religionBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_religionBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_religionBox1ActionPerformed
-
-    private void wosBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wosBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wosBox1ActionPerformed
-
-    private void wfBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wfBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wfBoxActionPerformed
+                  JOptionPane.showMessageDialog(null, "Edytowano ! ");
+                  CleanEditGroupItems();
+                 
+          
+            
+        }
+               
+                catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, "Uzupełnij wymagane pola lub wybierz innego wychowawcę!", "Error", JOptionPane.ERROR_MESSAGE);
+            
+                
+       
+             
+        }
+                 
+        }
+    }//GEN-LAST:event_ZapiszActionPerformed
 
     private void mondayRadioBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mondayRadioBtn1ActionPerformed
         // TODO add your handling code here:
@@ -1475,6 +1657,9 @@ public class EditWindow extends javax.swing.JFrame {
         if (evt.getSource() == teachersItem2) {
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "changeTeacher");
+            
+                   
+            
         }
     }//GEN-LAST:event_teachersItem2ActionPerformed
 
@@ -1482,6 +1667,7 @@ public class EditWindow extends javax.swing.JFrame {
         if (evt.getSource() == lessonItem2) {
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "changeLesson");
+            
         }
     }//GEN-LAST:event_lessonItem2ActionPerformed
 
@@ -1559,11 +1745,11 @@ public class EditWindow extends javax.swing.JFrame {
         String przedmiot1 = prz1.toString();
         Object prz2 = jComboBox11.getSelectedItem();
         String przedmiot2 = prz2.toString();
-        Object prz3 = jComboBox10.getSelectedItem();
+        Object prz3 = jComboBox12.getSelectedItem();
         String przedmiot3 = prz3.toString();
-        Object prz4 = jComboBox10.getSelectedItem();
+        Object prz4 = jComboBox13.getSelectedItem();
         String przedmiot4 = prz4.toString();
-        Object prz5 = jComboBox10.getSelectedItem();
+        Object prz5 = jComboBox14.getSelectedItem();
         String przedmiot5 = prz5.toString();
 
         String sqlAddTeacher = "insert into NAUCZYCIELE(NAU_ID, NAU_IMIE, NAU_NAZWISKO, PRZ_NAME_1, PRZ_NAME_2, PRZ_NAME_3, PRZ_NAME_4, PRZ_NAME_5) values \n"
@@ -1606,6 +1792,171 @@ public class EditWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_normalCheckBoxActionPerformed
 
+    private void classcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classcomboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classcomboActionPerformed
+
+    private void sub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub1ActionPerformed
+
+    private void sub3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sub3ActionPerformed
+
+    private void teacherscomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherscomboActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherscomboActionPerformed
+
+    private void teacherscomboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherscomboMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_teacherscomboMouseClicked
+
+    private void teacherscomboMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherscomboMousePressed
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherscomboMousePressed
+
+    private void teacherscomboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_teacherscomboItemStateChanged
+        JComboBox comboBox = (JComboBox) evt.getSource();
+
+                 
+                Object item = evt.getItem();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+                     FillEditTeachersItems();
+                     
+                }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherscomboItemStateChanged
+
+    private void teacherscomboComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_teacherscomboComponentShown
+      
+// TODO add your handling code here:
+    }//GEN-LAST:event_teacherscomboComponentShown
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+         
+
+                String nameteacher = nametext.getText();
+                String Id = idtextfield.getText();
+                int id = Integer.parseInt(Id);
+                String surnameteacher = surnametext.getText();
+                String subname1 = (String)sub1.getSelectedItem();
+                String subname2 = (String)sub2.getSelectedItem();
+                String subname3 = (String)sub3.getSelectedItem();
+                String subname4 = (String)sub4.getSelectedItem();
+                String subname5 = (String)sub5.getSelectedItem();
+             
+            
+
+              try {
+                  String sql = "update nauczyciele set Nau_Imie = '"+nameteacher+"', Nau_Nazwisko = '"+surnameteacher+"', Prz_Name_1 = '"+subname1+"', Prz_Name_2 = '"+subname2+"', Prz_Name_3 = '"+subname3+"', Prz_Name_4 = '"+subname4+"', Prz_Name_5 = '"+subname5+"' where Nau_Id = '"+id+"'";
+                  Statement stmt = conn.createStatement();
+                  stmt.execute(sql);
+                  stmt.close();
+
+                  JOptionPane.showMessageDialog(null, "Edytowano ! ");
+                  CleanEditTeachersItems();
+                 
+          
+            
+        } catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, "Uzupełnij odpowiednie dane!", "Error", JOptionPane.ERROR_MESSAGE);
+        }     
+            
+
+      
+    
+    
+
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void idtextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idtextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idtextfieldActionPerformed
+
+    private void anulujbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anulujbtnActionPerformed
+       CleanEditTeachersItems();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anulujbtnActionPerformed
+
+    private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
+        if(!"".equals(idtextfield.getText()))
+             {
+                int p= JOptionPane.showConfirmDialog(null,"Czy na pewno chcesz usunąć rekord?","usun",JOptionPane.YES_NO_OPTION);
+          
+                 if(p == 0) 
+                    
+                    {
+             
+                      String sql = "delete from nauczyciele where Nau_Id =?";
+                            
+                        try
+                           
+                            {
+                     
+                           pst=conn.prepareStatement(sql);
+                           pst.setString(1,idtextfield.getText());
+                           pst.execute();
+                           JOptionPane.showMessageDialog(null, "Usunięto ! ");
+                            CleanEditTeachersItems();
+                            
+                            }           
+                        catch (SQLException e){}
+                        finally 
+                        {
+                                 try
+                                 {
+                                    rs.close();
+                                    pst.close();
+                                 }
+                                catch(SQLException e){}
+
+                         }
+                    }
+                 else 
+                    {
+                    CleanEditTeachersItems();
+                    }
+            }       
+         else
+            {
+             JOptionPane.showMessageDialog(null, "Wybierz nauczyciela do usunięcia !");
+              CleanEditTeachersItems();
+             }
+                
+              
+
+            
+    }//GEN-LAST:event_deletebuttonActionPerformed
+
+    private void teacherscomboMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherscomboMouseEntered
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherscomboMouseEntered
+
+    private void anulujbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anulujbuttonActionPerformed
+        CleanEditGroupItems();        
+    }//GEN-LAST:event_anulujbuttonActionPerformed
+
+    private void textidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textidActionPerformed
+
+    private void classcomboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classcomboItemStateChanged
+        JComboBox comboBox = (JComboBox) evt.getSource();
+
+                // The item affected by the event.
+                Object item = evt.getItem();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+                     FillEditGroupItems();
+                    
+                }
+    }//GEN-LAST:event_classcomboItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1644,57 +1995,48 @@ public class EditWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton OKButton;
+    private javax.swing.JButton Zapisz;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;
     private javax.swing.JButton addLessonBtn;
     private javax.swing.JButton addTeacherButton;
-    private javax.swing.JCheckBox artBox1;
-    private javax.swing.JCheckBox biologyBox1;
+    private javax.swing.JButton anulujbtn;
+    private javax.swing.JButton anulujbutton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel changeGroup;
     private javax.swing.JPanel changeLesson;
     private javax.swing.JPanel changeTeacher;
-    private javax.swing.JCheckBox chemistryBox1;
     private javax.swing.JTextField classField;
     private javax.swing.JMenuItem classItem1;
     private javax.swing.JComboBox<String> classList;
     private javax.swing.JTextField classNumberField;
     private javax.swing.JPanel classPanel;
+    private javax.swing.JComboBox<String> classcombo;
+    private javax.swing.JTextField classtext;
     private javax.swing.JPanel cleanPanel;
+    private javax.swing.JComboBox<String> comboteacher;
     private javax.swing.JButton delete2Button;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JCheckBox edbBox1;
+    private javax.swing.JButton deletebutton;
     private javax.swing.JButton edit2Button;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JCheckBox englishBox1;
-    private javax.swing.JCheckBox ethicsBox1;
-    private javax.swing.JCheckBox frenchBox1;
     private javax.swing.JRadioButton fridayRadioBtn;
     private javax.swing.JRadioButton fridayRadioBtn1;
-    private javax.swing.JCheckBox geographyBox1;
-    private javax.swing.JCheckBox germanBox1;
     private javax.swing.JMenuItem groupItem1;
     private javax.swing.JMenuItem groupItem2;
     private javax.swing.JComboBox<String> groupList;
     private javax.swing.JPanel groupPanel;
     private javax.swing.JCheckBox gymCheckBox;
-    private javax.swing.JCheckBox historyBox1;
     private javax.swing.JComboBox<String> hourList;
     private javax.swing.JTextField idField;
-    private javax.swing.JCheckBox itBox1;
+    private javax.swing.JPanel idtext;
+    private javax.swing.JTextField idtextfield;
     private javax.swing.JCheckBox itCheckBox;
-    private javax.swing.JCheckBox italianBox1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
     private javax.swing.JComboBox jComboBox12;
     private javax.swing.JComboBox jComboBox13;
     private javax.swing.JComboBox jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
@@ -1721,6 +2063,7 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1738,35 +2081,39 @@ public class EditWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem lessonItem2;
     private javax.swing.JPanel lessonPanel;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JCheckBox mathBox1;
     private javax.swing.JRadioButton mondayRadioBtn;
     private javax.swing.JRadioButton mondayRadioBtn1;
+    private javax.swing.JLabel name;
     private javax.swing.JTextField nameField;
+    private javax.swing.JTextField nametext;
     private javax.swing.JMenu newMenu;
     private javax.swing.JCheckBox normalCheckBox;
-    private javax.swing.JCheckBox physicsBox1;
-    private javax.swing.JCheckBox polishBox1;
-    private javax.swing.JCheckBox ppBox1;
     private javax.swing.JPanel previewPanel;
     private javax.swing.JPanel previewPanel1;
-    private javax.swing.JCheckBox religionBox1;
     private javax.swing.JButton saveButton;
-    private javax.swing.JCheckBox spanishBox1;
+    private javax.swing.JComboBox<String> sub1;
+    private javax.swing.JComboBox<String> sub2;
+    private javax.swing.JComboBox<String> sub3;
+    private javax.swing.JComboBox<String> sub4;
+    private javax.swing.JComboBox<String> sub5;
+    private javax.swing.JLabel subject;
+    private javax.swing.JLabel surname;
+    private javax.swing.JTextField surnametext;
+    private javax.swing.JLabel teacher;
     private javax.swing.JComboBox<String> teacherBox;
     private javax.swing.JComboBox<String> teacherList;
     private javax.swing.JPanel teacherPanel;
     private javax.swing.JPanel teacherPanel2;
     private javax.swing.JMenuItem teachersItem1;
     private javax.swing.JMenuItem teachersItem2;
+    private javax.swing.JComboBox<String> teacherscombo;
+    private javax.swing.JTextField textid;
     private javax.swing.JRadioButton thursdayRadioBtn;
     private javax.swing.JRadioButton thursdayRadioBtn1;
     private javax.swing.JRadioButton tuesdayRadioBtn;
     private javax.swing.JRadioButton tuesdayRadioBtn1;
-    private javax.swing.JCheckBox wdzBoz1;
     private javax.swing.JRadioButton wednesdayRadioBtn;
     private javax.swing.JRadioButton wednesdayRadioBtn1;
-    private javax.swing.JCheckBox wfBox;
-    private javax.swing.JCheckBox wosBox1;
     // End of variables declaration//GEN-END:variables
 
     
