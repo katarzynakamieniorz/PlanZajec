@@ -11,6 +11,7 @@ import static Main.DataBase.url;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ItemEvent;
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,6 +50,7 @@ public class EditWindow extends javax.swing.JFrame {
         FillCombo2();
         FillComboTeachers();
         FillComboEditTeachers();
+        
         Fillgroup();        
     }
 
@@ -224,6 +226,8 @@ private void CleanEditGroupItems()
     
 }
  private void FillComboEditTeachers() {
+     
+
         try {
             String wyszukajNauczycieli = "select * from nauczyciele order by Nau_Nazwisko ASC";
             pst = conn.prepareStatement(wyszukajNauczycieli);
@@ -239,8 +243,9 @@ private void CleanEditGroupItems()
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }
-        
+    
+ }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1316,6 +1321,11 @@ private void CleanEditGroupItems()
         mainPanel.add(changeLesson, "changeLesson");
 
         newMenu.setText("Nowy");
+        newMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMenuActionPerformed(evt);
+            }
+        });
 
         groupItem1.setText("Grupy");
         groupItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -1593,12 +1603,15 @@ private void CleanEditGroupItems()
                      rs = pst.executeQuery();
                     int ID = rs.getInt("nau_id");
                      pst.close();
-                  String sql2 = "update klasy set kla_nazwa = '"+nameclass+"', kla_wychowawca = "+ID+"  where kla_id = '"+Id+"'";
-                  Statement stmt  = conn.createStatement();
-                  stmt.execute(sql2);
-                  stmt.close();
-
+                  String sql2 = "update klasy set kla_nazwa = '"+nameclass+"', kla_wychowawca = "+ID+"  where kla_id = "+id+"";
+                       pst=conn.prepareStatement(sql2);
+                           
+                           pst.execute();       
+               
                   JOptionPane.showMessageDialog(null, "Edytowano ! ");
+                 int index = classcombo.getSelectedIndex();
+                 classcombo.removeItemAt(index);
+                 classcombo.addItem(nameclass);
                   CleanEditGroupItems();
                  
           
@@ -1660,7 +1673,7 @@ private void CleanEditGroupItems()
         if (evt.getSource() == teachersItem2) {
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "changeTeacher");
-            
+         
                    
             
         }
@@ -1712,6 +1725,7 @@ private void CleanEditGroupItems()
                     stmt.executeUpdate(sqlAddClass);
                     
                     JOptionPane.showMessageDialog(null, "Dodano rekord do bazy");
+                    classcombo.addItem(className);
                 }
             }
             //stmt.close();
@@ -1763,9 +1777,10 @@ private void CleanEditGroupItems()
             // stmt.execute(CreateTableTeacher());
             stmt.executeUpdate(sqlAddTeacher);
             stmt.close();
-
+            
             JOptionPane.showMessageDialog(null, "Dodano rekord do bazy");
-
+            teacherscombo.addItem(teacherName +" "+ teacherSurname);
+            comboteacher.addItem(teacherName +" "+ teacherSurname);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -1861,13 +1876,34 @@ private void CleanEditGroupItems()
                   stmt.close();
 
                   JOptionPane.showMessageDialog(null, "Edytowano ! ");
-                  CleanEditTeachersItems();
+                  int index = teacherscombo.getSelectedIndex();
+                  
+                  
+                  
+                  String sql1 = "select * from nauczyciele where nau_id="+Id+"";
+                  pst = conn.prepareStatement(sql1);
+                  rs = pst.executeQuery(); 
+                  while(rs.next())
+                  {
+                  String nazwisko = rs.getString("nau_nazwisko");
+                  String imie = rs.getString("nau_imie");
+                  String imieNazwisko = nazwisko + " " + imie;
+                  teacherscombo.addItem(imieNazwisko);
+                  comboteacher.addItem(imieNazwisko);
+                  }
+                  
                  
+                  teacherscombo.removeItemAt(index); 
+                  comboteacher.removeItemAt(index); 
+                  CleanEditTeachersItems();
+                 pst.close();
+                 rs.close();
           
             
         } catch (SQLException e) {
               JOptionPane.showMessageDialog(null, "Uzupełnij odpowiednie dane!", "Error", JOptionPane.ERROR_MESSAGE);
-        }     
+        } 
+             
             
 
       
@@ -1961,6 +1997,10 @@ private void CleanEditGroupItems()
                     
                 }
     }//GEN-LAST:event_classcomboItemStateChanged
+
+    private void newMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuActionPerformed
+      
+    }//GEN-LAST:event_newMenuActionPerformed
 
     /**
      * @param args the command line arguments
