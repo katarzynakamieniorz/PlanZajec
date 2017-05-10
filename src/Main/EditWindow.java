@@ -54,11 +54,21 @@ public class EditWindow extends javax.swing.JFrame {
         Fillgroup();        
     }
     
+    // Funkcja czyszcząca pola w trybie tworzenia nowego nauczyciela
     public void reset(){
-        
-        idField.setText("");
+      
         nameField.setText("");
         lastnameFiled.setText("");
+    }
+    
+    // Funkcja generująca nowe Id dla każdego nowego nauczyciela
+    public void resetId()
+    {
+        NewID noweId = new NewID();
+        int teacherId = noweId.UstawNumerNauczyciela("Nau_ID","Nauczyciele");
+        
+        String ajdi = Integer.toString(teacherId);
+        idField.setText(ajdi);
     }
 
     private void Fillcombo() {
@@ -279,7 +289,7 @@ private void CleanEditGroupItems()
         jComboBox12 = new javax.swing.JComboBox();
         jComboBox13 = new javax.swing.JComboBox();
         jComboBox14 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        Bwyczysc = new javax.swing.JButton();
         groupPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -415,6 +425,12 @@ private void CleanEditGroupItems()
 
         jLabel8.setText("ID");
 
+        idField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFieldActionPerformed(evt);
+            }
+        });
+
         jComboBox10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox10ActionPerformed(evt);
@@ -445,10 +461,10 @@ private void CleanEditGroupItems()
             }
         });
 
-        jButton1.setText("Wyczyść");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bwyczysc.setText("Wyczyść");
+        Bwyczysc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BwyczyscActionPerformed(evt);
             }
         });
 
@@ -486,7 +502,7 @@ private void CleanEditGroupItems()
                         .addGap(39, 39, 39)
                         .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(addTeacherButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Bwyczysc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(561, Short.MAX_VALUE))
         );
         teacherPanelLayout.setVerticalGroup(
@@ -508,7 +524,7 @@ private void CleanEditGroupItems()
                 .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastnameFiled, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Bwyczysc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1434,6 +1450,14 @@ private void CleanEditGroupItems()
         if (evt.getSource() == teachersItem1) {
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "teacherPanel");
+            
+            NewID noweId = new NewID();
+            int teacherId = noweId.UstawNumerNauczyciela("Nau_ID","Nauczyciele");
+        
+            String ajdi = Integer.toString(teacherId);
+            idField.setText(ajdi);
+            
+            idField.setEditable(false);
 
         }
     }//GEN-LAST:event_teachersItem1ActionPerformed
@@ -1769,8 +1793,18 @@ private void CleanEditGroupItems()
         PreparedStatement pst;
         Statement stmt;
 
-        String teacherIdS = idField.getText();
-        int teacherId = Integer.parseInt(teacherIdS);
+        
+        //int teacherId = Integer.parseInt(teacherIdS);
+        
+        NewID noweId = new NewID();
+        int teacherId = noweId.UstawNumerNauczyciela("Nau_ID","Nauczyciele");
+        
+        String ajdi = Integer.toString(teacherId);
+        idField.setText(ajdi);
+        
+        //String teacherId = ajdi;
+        
+        
         String teacherName = nameField.getText();
         String teacherSurname = lastnameFiled.getText();
 
@@ -1800,6 +1834,15 @@ private void CleanEditGroupItems()
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
+        resetId();
+        nameField.setText("");
+        lastnameFiled.setText("");
+        jComboBox10.setSelectedIndex(0);
+        jComboBox11.setSelectedIndex(0);
+        jComboBox12.setSelectedIndex(0);
+        jComboBox13.setSelectedIndex(0);
+        jComboBox14.setSelectedIndex(0);
     }//GEN-LAST:event_addTeacherButtonActionPerformed
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
@@ -2018,9 +2061,18 @@ private void CleanEditGroupItems()
       
     }//GEN-LAST:event_newMenuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BwyczyscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BwyczyscActionPerformed
         reset();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        jComboBox10.setSelectedIndex(0);
+        jComboBox11.setSelectedIndex(0);
+        jComboBox12.setSelectedIndex(0);
+        jComboBox13.setSelectedIndex(0);
+        jComboBox14.setSelectedIndex(0);
+    }//GEN-LAST:event_BwyczyscActionPerformed
+
+    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2060,6 +2112,7 @@ private void CleanEditGroupItems()
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bwyczysc;
     private javax.swing.JButton Zapisz;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;
@@ -2096,7 +2149,6 @@ private void CleanEditGroupItems()
     private javax.swing.JPanel idtext;
     private javax.swing.JTextField idtextfield;
     private javax.swing.JCheckBox itCheckBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;

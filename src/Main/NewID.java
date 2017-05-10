@@ -46,4 +46,29 @@ public class NewID {
 
         return number2;
     }
+    
+    public int UstawNumerNauczyciela(String id_nau, String tabela){
+
+        Connection conn = DataBase.Connection();
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        String wyszukaj = "select max(" + id_nau + ") from " + tabela;
+
+        try{
+            pst = conn.prepareStatement(wyszukaj);
+            rs = pst.executeQuery();
+
+            if(rs.next()) {
+                number1 = rs.getInt(1);
+            }
+            number2 = number1 + 1;
+            pst.close();
+            rs.close();
+        } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        } 
+
+        return number2;
+    }
 }
