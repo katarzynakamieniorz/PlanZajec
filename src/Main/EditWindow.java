@@ -59,6 +59,12 @@ public class EditWindow extends javax.swing.JFrame {
       
         nameField.setText("");
         lastnameFiled.setText("");
+        
+        jComboBox10.setSelectedIndex(0);
+        jComboBox11.setSelectedIndex(0);
+        jComboBox12.setSelectedIndex(0);
+        jComboBox13.setSelectedIndex(0);
+        jComboBox14.setSelectedIndex(0);
     }
     
     // Funkcja generująca nowe Id dla każdego nowego nauczyciela
@@ -1444,6 +1450,8 @@ private void CleanEditGroupItems()
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "groupPanel");
         }
+        
+        reset();
     }//GEN-LAST:event_groupItem1ActionPerformed
 
     private void teachersItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersItem1ActionPerformed
@@ -1469,6 +1477,7 @@ private void CleanEditGroupItems()
             
             
         }
+        reset();
     }//GEN-LAST:event_groupItem2ActionPerformed
 
     private void mondayRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mondayRadioBtnActionPerformed
@@ -1489,6 +1498,8 @@ private void CleanEditGroupItems()
             card.show(mainPanel, "lessonPanel");
 
         }
+        
+        reset();
     }//GEN-LAST:event_lessonItemActionPerformed
 
     private void classNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classNumberFieldActionPerformed
@@ -1567,6 +1578,8 @@ private void CleanEditGroupItems()
             card.show(mainPanel, "classPanel");
             
         }
+        
+        reset();
     }//GEN-LAST:event_classItem1ActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -1717,6 +1730,7 @@ private void CleanEditGroupItems()
                    
             
         }
+        reset();
     }//GEN-LAST:event_teachersItem2ActionPerformed
 
     private void lessonItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lessonItem2ActionPerformed
@@ -1725,6 +1739,7 @@ private void CleanEditGroupItems()
             card.show(mainPanel, "changeLesson");
             
         }
+        reset();
     }//GEN-LAST:event_lessonItem2ActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
@@ -2063,11 +2078,7 @@ private void CleanEditGroupItems()
 
     private void BwyczyscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BwyczyscActionPerformed
         reset();
-        jComboBox10.setSelectedIndex(0);
-        jComboBox11.setSelectedIndex(0);
-        jComboBox12.setSelectedIndex(0);
-        jComboBox13.setSelectedIndex(0);
-        jComboBox14.setSelectedIndex(0);
+        
     }//GEN-LAST:event_BwyczyscActionPerformed
 
     private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
