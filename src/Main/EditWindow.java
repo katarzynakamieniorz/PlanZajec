@@ -65,6 +65,8 @@ public class EditWindow extends javax.swing.JFrame {
         jComboBox12.setSelectedIndex(0);
         jComboBox13.setSelectedIndex(0);
         jComboBox14.setSelectedIndex(0);
+        classNumberField.setText(" ");
+        buttonGroup1.clearSelection();
     }
     
     // Funkcja generująca nowe Id dla każdego nowego nauczyciela
@@ -336,6 +338,7 @@ private void CleanEditGroupItems()
         itCheckBox = new javax.swing.JCheckBox();
         addClassBtn = new javax.swing.JButton();
         normalCheckBox = new javax.swing.JCheckBox();
+        CzyscButtonSale = new javax.swing.JButton();
         idtext = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         classcombo = new javax.swing.JComboBox<String>();
@@ -865,6 +868,13 @@ private void CleanEditGroupItems()
             }
         });
 
+        CzyscButtonSale.setText("Wyczyść");
+        CzyscButtonSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CzyscButtonSaleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout classPanelLayout = new javax.swing.GroupLayout(classPanel);
         classPanel.setLayout(classPanelLayout);
         classPanelLayout.setHorizontalGroup(
@@ -881,7 +891,9 @@ private void CleanEditGroupItems()
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(normalCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addClassBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(CzyscButtonSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(418, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
@@ -894,13 +906,15 @@ private void CleanEditGroupItems()
                     .addComponent(jLabel17)
                     .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addClassBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CzyscButtonSale, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(normalCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(gymCheckBox)
                 .addGap(7, 7, 7)
                 .addComponent(itCheckBox)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         mainPanel.add(classPanel, "classPanel");
@@ -1517,8 +1531,6 @@ private void CleanEditGroupItems()
         PreparedStatement pst;
         Statement stmt;
        
-        //String ClassNumber = classNumberField.getText();
-        
         NewID noweId = new NewID();
         int Idsali = noweId.UstawNumer("SAL_ID","SALE");
         
@@ -1530,18 +1542,15 @@ private void CleanEditGroupItems()
             ClassTyp = "IT";
         }
         else if (normalCheckBox.isSelected())
-        
+        {
             ClassTyp = "N";
         
-        
+        }
         else 
-        {ClassTyp = " ";}
-          
-        
-                    //String sqlAddClass = "insert into SALE(SAL_ID, SAL_NUMER, SAL_RODZAJ) values \n"
-                    //+ "('" + Idsali + "','" + ClassNumber + "','" + ClassTyp + "' );";
-                    if(normalCheckBox.isSelected()||itCheckBox.isSelected()||gymCheckBox.isSelected())
-                    {
+        {
+            JOptionPane.showMessageDialog(null, "Wybierz typ sali!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+         
         try {
             String ClassNumber = classNumberField.getText();
         String sqlAddClass = "insert into SALE(SAL_ID, SAL_NUMER, SAL_RODZAJ) values \n"
@@ -1550,11 +1559,11 @@ private void CleanEditGroupItems()
 
             stmt.executeUpdate(sqlAddClass);
             stmt.close();
-         
-            
-                    JOptionPane.showMessageDialog(null, "Dodano rekord do bazy");
+           JOptionPane.showMessageDialog(null, "Dodano rekord do bazy");
                             
                     classNumberField.setText(" ");
+                     buttonGroup1.clearSelection();
+                   
                     
                     CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "classPanel");
@@ -1562,14 +1571,7 @@ private void CleanEditGroupItems()
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Uzupełnij odpowiednie dane!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-                    }
-                    else 
-                    {
-                        JOptionPane.showMessageDialog(null, "Wybierz typ sali!", "Error", JOptionPane.ERROR_MESSAGE);
-
-                    }
-
-        
+              
     }//GEN-LAST:event_addClassBtnActionPerformed
 
     private void classItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classItem1ActionPerformed
@@ -1851,6 +1853,7 @@ private void CleanEditGroupItems()
         }
         
         resetId();
+        
         nameField.setText("");
         lastnameFiled.setText("");
         jComboBox10.setSelectedIndex(0);
@@ -2085,6 +2088,11 @@ private void CleanEditGroupItems()
         // TODO add your handling code here:
     }//GEN-LAST:event_idFieldActionPerformed
 
+    private void CzyscButtonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CzyscButtonSaleActionPerformed
+        classNumberField.setText(" ");
+        buttonGroup1.clearSelection();
+    }//GEN-LAST:event_CzyscButtonSaleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2124,6 +2132,7 @@ private void CleanEditGroupItems()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bwyczysc;
+    private javax.swing.JButton CzyscButtonSale;
     private javax.swing.JButton Zapisz;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;

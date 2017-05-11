@@ -847,7 +847,10 @@
                           <Component id="normalCheckBox" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="123" max="32767" attributes="0"/>
-                      <Component id="addClassBtn" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="addClassBtn" pref="133" max="32767" attributes="0"/>
+                          <Component id="CzyscButtonSale" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="418" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -863,13 +866,15 @@
                           <Component id="classNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="addClassBtn" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="CzyscButtonSale" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="normalCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="gymCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="itCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="317" max="32767" attributes="0"/>
+                      <EmptySpace pref="258" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -926,6 +931,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="normalCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="CzyscButtonSale">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wyczy&#x15b;&#x107;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CzyscButtonSaleActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
