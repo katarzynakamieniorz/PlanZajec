@@ -50,7 +50,7 @@ public class EditWindow extends javax.swing.JFrame {
         FillCombo2();
         FillComboTeachers();
         FillComboEditTeachers();
-        
+        FillComboTeacherinEditGroups();
         Fillgroup();        
     }
     
@@ -263,6 +263,27 @@ private void CleanEditGroupItems()
                 String imie = rs.getString("nau_imie");
                 String imieNazwisko = nazwisko + " " + imie;
                 teacherscombo.addItem(imieNazwisko);
+                //comboteacher.addItem(imieNazwisko);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    
+ }
+  private void FillComboTeacherinEditGroups() {
+     
+
+        try {
+            
+            String wyszukajNauczycieli = "SELECT * FROM nauczyciele LEFT JOIN klasy ON klasy.kla_wychowawca=nauczyciele.NAU_ID where klasy.kla_wychowawca IS NULL ";
+            pst = conn.prepareStatement(wyszukajNauczycieli);
+            rs = pst.executeQuery();
+            
+            while(rs.next()) {
+                String nazwisko = rs.getString("nau_nazwisko");
+                String imie = rs.getString("nau_imie");
+                String imieNazwisko = nazwisko + " " + imie;
+               
                 comboteacher.addItem(imieNazwisko);
             }
         } catch (SQLException e) {
@@ -303,7 +324,7 @@ private void CleanEditGroupItems()
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<String>();
+        teacherBox = new javax.swing.JComboBox<>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -311,11 +332,11 @@ private void CleanEditGroupItems()
         lessonPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        groupList = new javax.swing.JComboBox<String>();
+        groupList = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        classList = new javax.swing.JComboBox<String>();
+        classList = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        teacherList = new javax.swing.JComboBox<String>();
+        teacherList = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         mondayRadioBtn = new javax.swing.JRadioButton();
         tuesdayRadioBtn = new javax.swing.JRadioButton();
@@ -323,13 +344,13 @@ private void CleanEditGroupItems()
         thursdayRadioBtn = new javax.swing.JRadioButton();
         fridayRadioBtn = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        hourList = new javax.swing.JComboBox<String>();
+        hourList = new javax.swing.JComboBox<>();
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -341,7 +362,7 @@ private void CleanEditGroupItems()
         CzyscButtonSale = new javax.swing.JButton();
         idtext = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        classcombo = new javax.swing.JComboBox<String>();
+        classcombo = new javax.swing.JComboBox<>();
         deleteButton = new javax.swing.JButton();
         Zapisz = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -350,18 +371,18 @@ private void CleanEditGroupItems()
         classtext = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        comboteacher = new javax.swing.JComboBox<String>();
+        comboteacher = new javax.swing.JComboBox<>();
         changeTeacher = new javax.swing.JPanel();
         teacher = new javax.swing.JLabel();
-        teacherscombo = new javax.swing.JComboBox<String>();
+        teacherscombo = new javax.swing.JComboBox<>();
         deletebutton = new javax.swing.JButton();
         subject = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        sub1 = new javax.swing.JComboBox<String>();
-        sub2 = new javax.swing.JComboBox<String>();
-        sub3 = new javax.swing.JComboBox<String>();
-        sub4 = new javax.swing.JComboBox<String>();
-        sub5 = new javax.swing.JComboBox<String>();
+        sub1 = new javax.swing.JComboBox<>();
+        sub2 = new javax.swing.JComboBox<>();
+        sub3 = new javax.swing.JComboBox<>();
+        sub4 = new javax.swing.JComboBox<>();
+        sub5 = new javax.swing.JComboBox<>();
         nametext = new javax.swing.JTextField();
         surnametext = new javax.swing.JTextField();
         name = new javax.swing.JLabel();
@@ -371,7 +392,7 @@ private void CleanEditGroupItems()
         idtextfield = new javax.swing.JTextField();
         changeLesson = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         mondayRadioBtn1 = new javax.swing.JRadioButton();
         tuesdayRadioBtn1 = new javax.swing.JRadioButton();
@@ -379,18 +400,18 @@ private void CleanEditGroupItems()
         thursdayRadioBtn1 = new javax.swing.JRadioButton();
         fridayRadioBtn1 = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<String>();
+        jComboBox6 = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<String>();
+        jComboBox7 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<String>();
+        jComboBox8 = new javax.swing.JComboBox<>();
         edit2Button = new javax.swing.JButton();
         delete2Button = new javax.swing.JButton();
         previewPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<String>();
+        jComboBox9 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         newMenu = new javax.swing.JMenu();
         groupItem1 = new javax.swing.JMenuItem();
@@ -525,7 +546,7 @@ private void CleanEditGroupItems()
                         .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(teacherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -651,15 +672,15 @@ private void CleanEditGroupItems()
 
         jLabel11.setText("Klasa");
 
-        groupList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        groupList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Sala");
 
-        classList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Nauczyciel");
 
-        teacherList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teacherList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setText("Dzień");
 
@@ -690,7 +711,7 @@ private void CleanEditGroupItems()
 
         jLabel15.setText("Godzina");
 
-        hourList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hourList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         hourList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hourListActionPerformed(evt);
@@ -729,7 +750,7 @@ private void CleanEditGroupItems()
 
         jLabel28.setText("Przedmiot");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -921,7 +942,7 @@ private void CleanEditGroupItems()
 
         jLabel18.setText("Wybierz klasę:");
 
-        classcombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klasa" }));
+        classcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Klasa" }));
         classcombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 classcomboItemStateChanged(evt);
@@ -967,7 +988,12 @@ private void CleanEditGroupItems()
 
         jLabel29.setText("Klasa");
 
-        comboteacher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
+        comboteacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
+        comboteacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboteacherActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout idtextLayout = new javax.swing.GroupLayout(idtext);
         idtext.setLayout(idtextLayout);
@@ -1029,7 +1055,7 @@ private void CleanEditGroupItems()
 
         teacher.setText("Wybierz nauczyciela:");
 
-        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
+        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
         teacherscombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 teacherscomboItemStateChanged(evt);
@@ -1190,7 +1216,7 @@ private void CleanEditGroupItems()
 
         jLabel22.setText("Klasa:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Dzień:");
 
@@ -1221,11 +1247,11 @@ private void CleanEditGroupItems()
 
         jLabel24.setText("Godzina:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel25.setText("Sala:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox7ActionPerformed(evt);
@@ -1234,7 +1260,7 @@ private void CleanEditGroupItems()
 
         jLabel26.setText("Nauczyciel:");
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         edit2Button.setText("Edytuj");
         edit2Button.addActionListener(new java.awt.event.ActionListener() {
@@ -1275,7 +1301,7 @@ private void CleanEditGroupItems()
 
         jLabel27.setText("Przedmiot:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -1300,7 +1326,7 @@ private void CleanEditGroupItems()
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -1373,6 +1399,11 @@ private void CleanEditGroupItems()
         mainPanel.add(changeLesson, "changeLesson");
 
         newMenu.setText("Nowy");
+        newMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newMenuMouseClicked(evt);
+            }
+        });
         newMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newMenuActionPerformed(evt);
@@ -1414,6 +1445,11 @@ private void CleanEditGroupItems()
         jMenuBar1.add(newMenu);
 
         editMenu.setText("Edytuj");
+        editMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMenuMouseClicked(evt);
+            }
+        });
 
         groupItem2.setText("Grupy");
         groupItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -2092,6 +2128,20 @@ private void CleanEditGroupItems()
         classNumberField.setText(" ");
         buttonGroup1.clearSelection();
     }//GEN-LAST:event_CzyscButtonSaleActionPerformed
+
+    private void newMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuMouseClicked
+        CleanEditTeachersItems();
+        CleanEditGroupItems();
+    }//GEN-LAST:event_newMenuMouseClicked
+
+    private void editMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMenuMouseClicked
+      CleanEditTeachersItems();
+        CleanEditGroupItems();
+    }//GEN-LAST:event_editMenuMouseClicked
+
+    private void comboteacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboteacherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboteacherActionPerformed
 
     /**
      * @param args the command line arguments
