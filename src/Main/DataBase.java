@@ -164,6 +164,34 @@ public class DataBase {
            }
           
     }
+       
+        public static void CreateTablePlan()
+     {
+         String sql = "CREATE TABLE IF NOT EXISTS Planzajec3 (\n"
+                + "	plan_id integer PRIMARY KEY NOT NULL UNIQUE,\n"
+                + "	plan_klasa integer NOT NULL UNIQUE,\n"
+                + "     plan_dzien string NOT NULL, \n"
+                + "     plan_godzina integer NOT NULL, \n"              
+                + "     plan_przedmiot integer NOT NULL, \n"
+                 + "    plan_nauczyciel integer NOT NULL, \n"
+                + "     plan_sala integer NOT NULL \n"
+                + ");";
+      
+          try (Connection conn = DriverManager.getConnection(url);
+                Statement stmt = conn.createStatement())
+           {
+            
+            stmt.execute(sql);
+            // stmt.close();
+           }
+           catch (SQLException e) 
+           {
+               
+            System.out.println(e.getMessage());
+           }
+          
+    }
+          
     
       
 }

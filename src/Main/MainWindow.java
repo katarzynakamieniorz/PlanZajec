@@ -23,7 +23,7 @@ public class MainWindow extends javax.swing.JFrame {
         Connection();
         CreateTableLogin();
         CreateTableSale();
-        
+        CreateTablePlan();
         InsertIntoLogin("Admin1","Haslo1");
         InsertIntoLogin("Admin2","Haslo2");
         InsertIntoLogin("Admin3","Haslo3");
