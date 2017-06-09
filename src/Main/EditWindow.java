@@ -2833,6 +2833,19 @@ private void CleanEditTime()
     private void groupListPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_groupListPopupMenuWillBecomeInvisible
       
         String tmp =(String)groupList.getSelectedItem();
+        hourList.removeAllItems();
+        classList.removeAllItems();
+        teacherList.removeAllItems();
+        Fillcombo();
+        klasapole.setText("");
+        dzien.setText("");
+                godzina1.setText("");
+                 godzina2.setText("");
+                  godzina3.setText("");
+                   godzina4.setText("");
+                przedmiotpole.setText("");
+                imiepole1.setText("");
+                salapole.setText("");
         klasapole.setText(tmp);
         
         
@@ -2842,7 +2855,20 @@ private void CleanEditTime()
     private void hourListPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_hourListPopupMenuWillBecomeInvisible
        String tmp =(String)hourList.getSelectedItem();
        int id =  Integer.parseInt(tmp);
-        
+        //hourList.removeAllItems();
+        classList.removeAllItems();
+        teacherList.removeAllItems();
+        Fillcombo();
+        //klasapole.setText("");
+        //dzien.setText("");
+                godzina1.setText("");
+                 godzina2.setText("");
+                  godzina3.setText("");
+                   godzina4.setText("");
+                przedmiotpole.setText("");
+                imiepole1.setText("");
+                salapole.setText("");
+       
         String sql="select * from Godzina where ID_godz = '"+id+"'";
         try{
                 pst=conn.prepareStatement(sql);
@@ -2874,14 +2900,33 @@ private void CleanEditTime()
     }//GEN-LAST:event_dzienActionPerformed
 
     private void dzientygodniaPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_dzientygodniaPopupMenuWillBecomeInvisible
-String tmp =(String)dzientygodnia.getSelectedItem();
-        dzien.setText(tmp);
-     
+      String tmp =(String)dzientygodnia.getSelectedItem();
+       dzien.setText("");
+        
+        hourList.removeAllItems();
+        classList.removeAllItems();
+        teacherList.removeAllItems();
+        Fillcombo();
+        //klasapole.setText("");
+       
+                godzina1.setText("");
+                 godzina2.setText("");
+                  godzina3.setText("");
+                   godzina4.setText("");
+                przedmiotpole.setText("");
+                imiepole1.setText("");
+                salapole.setText("");
+                dzien.setText(tmp);
         Fillcombogodziny();        // TODO add your handling code here:
     }//GEN-LAST:event_dzientygodniaPopupMenuWillBecomeInvisible
 
     private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
        String tmp =(String)jComboBox1.getSelectedItem();
+       classList.removeAllItems();
+        teacherList.removeAllItems();
+        przedmiotpole.setText("");
+                imiepole1.setText("");
+                salapole.setText("");
         przedmiotpole.setText(tmp);
         Fillcombonauczyciel();
         
@@ -2893,6 +2938,9 @@ String tmp =(String)dzientygodnia.getSelectedItem();
 
     private void teacherListPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_teacherListPopupMenuWillBecomeInvisible
        String tmp =(String)teacherList.getSelectedItem();
+       imiepole1.setText("");
+                salapole.setText("");
+                classList.removeAllItems();
         imiepole1.setText(tmp);
         Fillcombonauczyciel();
         Fillcombosala();
