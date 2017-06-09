@@ -2074,7 +2074,7 @@ private void CleanEditTime()
              int nauczycielid =rs.getInt("Nau_ID");  
              a.setText(Integer.toString(nauczycielid));
 
-       String sqlAddClass = "insert into Planzajec5 values ('1','" + idklasy + "','" + dzientygodnia1 + "','" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' );";
+       String sqlAddClass = "insert into Planzajec5 values ('2','" + idklasy + "','" + dzientygodnia1 + "','" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' );";
                     
      try (Statement stmt = conn.createStatement()) {
          stmt.executeUpdate(sqlAddClass);
@@ -2083,7 +2083,7 @@ private void CleanEditTime()
             rs.close();
        }
        catch (Exception e){
-           
+           JOptionPane.showMessageDialog(null, "Uzupełnij odpowiednie dane!", "Error", JOptionPane.ERROR_MESSAGE);
        }
         
         
