@@ -570,10 +570,10 @@ private void CleanEditTime()
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        a = new javax.swing.JTextField();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        klasapole = new javax.swing.JTextField();
         godzina1 = new javax.swing.JTextField();
         godzina2 = new javax.swing.JTextField();
         godzina3 = new javax.swing.JTextField();
@@ -583,6 +583,7 @@ private void CleanEditTime()
         salapole = new javax.swing.JTextField();
         dzien = new javax.swing.JTextField();
         dzientygodnia = new javax.swing.JComboBox<>();
+        klasapole = new javax.swing.JTextField();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -1008,14 +1009,20 @@ private void CleanEditTime()
         previewPanelLayout.setHorizontalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previewPanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(previewPanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(previewPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         previewPanelLayout.setVerticalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previewPanelLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(83, Short.MAX_VALUE))
         );
@@ -1091,21 +1098,17 @@ private void CleanEditTime()
                                                 .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(godzina1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(18, 18, 18)
+                                .addGap(22, 22, 22)
                                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(salapole, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(lessonPanelLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(salapole, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                                .addComponent(godzina2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(godzina3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(godzina4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(godzina2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(godzina3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(godzina4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(14, 14, 14))
                     .addGroup(lessonPanelLayout.createSequentialGroup()
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,6 +1133,11 @@ private void CleanEditTime()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(lessonPanelLayout.createSequentialGroup()
+                    .addGap(404, 404, 404)
+                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(540, Short.MAX_VALUE)))
         );
         lessonPanelLayout.setVerticalGroup(
             lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1142,8 +1150,7 @@ private void CleanEditTime()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel11)
-                                    .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
                                 .addComponent(jLabel14)
                                 .addGap(27, 27, 27)
@@ -1180,6 +1187,11 @@ private void CleanEditTime()
                 .addGap(31, 31, 31)
                 .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
+            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(lessonPanelLayout.createSequentialGroup()
+                    .addGap(42, 42, 42)
+                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(448, Short.MAX_VALUE)))
         );
 
         mainPanel.add(lessonPanel, "lessonPanel");
@@ -2037,30 +2049,32 @@ private void CleanEditTime()
   String godzinaid =(String)classList.getSelectedItem();
   int godzinaidint = Integer.parseInt(godzinaid);
  String przedmiot = przedmiotpole.getText();
-   String NameSurname = (String)teacherList.getSelectedItem();
+ String NameSurname = (String)teacherList.getSelectedItem();
     String salaid = (String)classList.getSelectedItem();
     int salaajdi = Integer.parseInt(salaid);
-          int id = Integer.parseInt(tmp);
+         
        try{
-           String sql = "Select * from klasy where kla_nazwa = " + tmp + "";
+           String sql = "Select * from klasy where kla_nazwa = '" + tmp + "'";
            
                 pst=conn.prepareStatement(sql);
                  rs=pst.executeQuery();
                  
            int idklasy =rs.getInt("kla_id");
+          
 //                     int idklasy1 = 4;
-           String sql1 = "Select * from Przedmioty where Prz_NAME = "+przedmiot+"";    
+           String sql1 = "Select * from Przedmioty where Prz_NAME = '"+przedmiot+"'";    
                pst=conn.prepareStatement(sql1);
                  rs=pst.executeQuery();
              
              int przedmiotid =rs.getInt("Prz_ID");     
-//        
-        String sql23 = "Select * from nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = "+NameSurname+"";
+         
+        String sql23 = "Select * from Nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = '"+NameSurname+"'";
          pst = conn.prepareStatement(sql23);
             rs = pst.executeQuery();   
              int nauczycielid =rs.getInt("Nau_ID");  
-           int planid = 4;
-       String sqlAddClass = "insert into Planzajec4(plan_id, plan_klasa, plan_dzien, plan_godzina, plan_przedmiot, plan_nauczyciel, plan_sala) values ('" + planid + "','" + idklasy + "'," + dzientygodnia1 + ",'" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' )";
+             a.setText(Integer.toString(nauczycielid));
+
+       String sqlAddClass = "insert into Planzajec5 values ('1','" + idklasy + "','" + dzientygodnia1 + "','" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' );";
                     
      try (Statement stmt = conn.createStatement()) {
          stmt.executeUpdate(sqlAddClass);
@@ -3014,6 +3028,7 @@ private void CleanEditTime()
     private javax.swing.JButton CzyscButtonSale;
     private javax.swing.JMenuItem TimeItem;
     private javax.swing.JButton Zapisz;
+    private javax.swing.JTextField a;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;
     private javax.swing.JButton addLessonBtn;

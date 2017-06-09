@@ -563,24 +563,18 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="klasapole" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="przedmiotpole" min="-2" pref="121" max="-2" attributes="0"/>
+                                          <Component id="salapole" min="-2" pref="124" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="przedmiotpole" min="-2" pref="121" max="-2" attributes="0"/>
-                                                  <Component id="salapole" min="-2" pref="124" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="godzina2" min="-2" pref="34" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="godzina3" min="-2" pref="42" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="godzina4" min="-2" pref="52" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="dzien" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="godzina2" min="-2" pref="34" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="godzina3" min="-2" pref="42" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="godzina4" min="-2" pref="52" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="dzien" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -619,6 +613,13 @@
                       <Component id="previewPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="404" max="-2" attributes="0"/>
+                          <Component id="klasapole" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace pref="540" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -633,7 +634,6 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="groupList" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="klasapole" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -680,6 +680,13 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="addLessonBtn" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="klasapole" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="448" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -776,9 +783,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="333" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="333" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="a" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace pref="92" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -786,7 +801,8 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="a" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="206" max="-2" attributes="0"/>
                           <EmptySpace pref="83" max="32767" attributes="0"/>
                       </Group>
@@ -813,6 +829,8 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JTextField" name="a">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="addLessonBtn">
@@ -841,8 +859,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="klasapole">
             </Component>
             <Component class="javax.swing.JTextField" name="godzina1">
             </Component>
@@ -881,6 +897,8 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="klasapole">
             </Component>
           </SubComponents>
         </Container>
