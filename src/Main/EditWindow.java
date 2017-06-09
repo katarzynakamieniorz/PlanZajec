@@ -195,7 +195,7 @@ public class EditWindow extends javax.swing.JFrame {
        private void FillCombosale()
     {
         try {
-            String godz = "select * from Sale";
+            String godz = "select * from Sale1";
             pst = conn.prepareStatement(godz);
             rs = pst.executeQuery();
             while(rs.next()) {
@@ -476,7 +476,7 @@ private void CleanEditTime()
             //String klasaid = "Select * from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"'";
            
            
-          String klasaid = "Select sal_id from Sale EXCEPT select plan_sala from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
+          String klasaid = "Select sal_id from Sale1 EXCEPT select plan_sala from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
             pst=conn.prepareStatement(klasaid);
             rs=pst.executeQuery();
           while(rs.next()){
@@ -2031,63 +2031,46 @@ private void CleanEditTime()
     }//GEN-LAST:event_groupItem2ActionPerformed
 
     private void addLessonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLessonBtnActionPerformed
-//        String nazwaklasy = (String)groupList.getSelectedItem();
-//       
-//        int Day = 0;
-//        if(mondayRadioBtn.isSelected()){
-//            Day = 1;
-//        }
-//        else if (tuesdayRadioBtn.isSelected()){
-//            Day = 2;
-//        }
-//        else if (wednesdayRadioBtn.isSelected())
-//        {
-//            Day = 3;
+ //String tmp1 =(String)classList.getSelectedItem();
+ String tmp = klasapole.getText();
+ String dzientygodnia1 = dzien.getText();
+  String godzinaid =(String)classList.getSelectedItem();
+  int godzinaidint = Integer.parseInt(godzinaid);
+ String przedmiot = przedmiotpole.getText();
+   String NameSurname = (String)teacherList.getSelectedItem();
+    String salaid = (String)classList.getSelectedItem();
+    int salaajdi = Integer.parseInt(salaid);
+          int id = Integer.parseInt(tmp);
+       try{
+           String sql = "Select * from klasy where kla_nazwa = " + tmp + "";
+           
+                pst=conn.prepareStatement(sql);
+                 rs=pst.executeQuery();
+                 
+           int idklasy =rs.getInt("kla_id");
+//                     int idklasy1 = 4;
+           String sql1 = "Select * from Przedmioty where Prz_NAME = "+przedmiot+"";    
+               pst=conn.prepareStatement(sql1);
+                 rs=pst.executeQuery();
+             
+             int przedmiotid =rs.getInt("Prz_ID");     
 //        
-//        }
-//        else if (thursdayRadioBtn.isSelected())
-//        {
-//            Day = 4;
-//        
-//        }
-//        else if (fridayRadioBtn.isSelected())
-//        {
-//            Day = 5;
-//        
-//        
-//        }
-//         else 
-//        {
-//            JOptionPane.showMessageDialog(null, "Wybierz dzień!", "Error", JOptionPane.ERROR_MESSAGE);
-//            }
-//      
-//        try {
-//            String klasy = "select kla_id from klasy where kla_nazwa = '"+nazwaklasy+"'";
-//             pst = conn.prepareStatement(klasy);
-//            rs = pst.executeQuery();
-//            
-//             int klasaid = rs.getInt(klasy);
-//             rs.close();
-//             pst.close();
-//             String godz = "select plam_godzina from Planzajec where plan_dzien = '"+Day+"' and plan_klasa != '"+klasaid+"'";
-//             
-//            pst = conn.prepareStatement(godz);
-//            rs = pst.executeQuery();
-//            while(rs.next()) {
-//                int godz1 = rs.getInt("plan_godzina");
-//                 String godzina = Integer.toString(godz1);
-//                
-//                
-//                hourList.addItem(godzina);
-//                
-//            }
-//            
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
-//        } 
-//        
-//    
-       
+        String sql23 = "Select * from nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = "+NameSurname+"";
+         pst = conn.prepareStatement(sql23);
+            rs = pst.executeQuery();   
+             int nauczycielid =rs.getInt("Nau_ID");  
+           int planid = 4;
+       String sqlAddClass = "insert into Planzajec4(plan_id, plan_klasa, plan_dzien, plan_godzina, plan_przedmiot, plan_nauczyciel, plan_sala) values ('" + planid + "','" + idklasy + "'," + dzientygodnia1 + ",'" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' )";
+                    
+     try (Statement stmt = conn.createStatement()) {
+         stmt.executeUpdate(sqlAddClass);
+     }
+            pst.close();
+            rs.close();
+       }
+       catch (Exception e){
+           
+       }
         
         
     }//GEN-LAST:event_addLessonBtnActionPerformed
@@ -2118,7 +2101,7 @@ private void CleanEditTime()
         Statement stmt;
        
         NewID noweId = new NewID();
-        int Idsali = noweId.UstawNumer("SAL_ID","SALE");
+        int Idsali = noweId.UstawNumer("SAL_ID","SALE1");
         
         String ClassTyp = " ";
         if(gymCheckBox.isSelected()){
@@ -2139,7 +2122,7 @@ private void CleanEditTime()
          
         try {
             String ClassNumber = classNumberField.getText();
-        String sqlAddClass = "insert into SALE(SAL_ID, SAL_NUMER, SAL_RODZAJ) values \n"
+        String sqlAddClass = "insert into SALE1(SAL_ID, SAL_NUMER, SAL_RODZAJ) values \n"
                     + "('" + Idsali + "','" + ClassNumber + "','" + ClassTyp + "' );";
             stmt = conn.createStatement();
 
@@ -2922,16 +2905,17 @@ String tmp =(String)dzientygodnia.getSelectedItem();
 
     private void classListPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_classListPopupMenuWillBecomeInvisible
           String tmp =(String)classList.getSelectedItem();
+          int id = Integer.parseInt(tmp);
        try{
-           String sql = "Select * from Sale where sal_numer = '"+tmp+"'";
+           String sql = "Select * from Sale1 where sal_id = '"+id+"'";
            
                 pst=conn.prepareStatement(sql);
                  rs=pst.executeQuery();
                  
                 
-                    int rodzaj=rs.getInt("sal_rodzaj");
+                    String rodzaj=rs.getString("sal_rodzaj");
                      
-                       salapole.setText(Integer.toString(rodzaj));
+                       salapole.setText(rodzaj);
                        
        
        }

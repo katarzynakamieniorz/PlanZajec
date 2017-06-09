@@ -144,10 +144,10 @@ public class DataBase {
      */
     public static void CreateTableSale()
      {
-         String sql = "CREATE TABLE IF NOT EXISTS Sale (\n"
+         String sql = "CREATE TABLE IF NOT EXISTS Sale1 (\n"
                 + "	sal_id integer PRIMARY KEY NOT NULL UNIQUE,\n"
                 + "	sal_numer text NOT NULL UNIQUE,\n"
-                + "     sal_rodzaj integer NOT NULL \n"
+                + "     sal_rodzaj text NOT NULL \n"
                 + ");";
       
           try (Connection conn = DriverManager.getConnection(url);
