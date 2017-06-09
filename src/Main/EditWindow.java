@@ -390,7 +390,7 @@ private void CleanEditTime()
               
         
 
-                String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec3 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
+                String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec4 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
                  pst=conn.prepareStatement(sql123);
             rs=pst.executeQuery();
             while(rs.next()){
@@ -426,7 +426,7 @@ private void CleanEditTime()
             //String klasaid = "Select * from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"'";
            
            
-          String klasaid = "Select Nau_ID from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"' EXCEPT select plan_nauczyciel from Planzajec3 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
+          String klasaid = "Select Nau_ID from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"' EXCEPT select plan_nauczyciel from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
             pst=conn.prepareStatement(klasaid);
             rs=pst.executeQuery();
           while(rs.next()){
@@ -476,7 +476,7 @@ private void CleanEditTime()
             //String klasaid = "Select * from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"'";
            
            
-          String klasaid = "Select sal_id from Sale EXCEPT select plan_sala from Planzajec3 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
+          String klasaid = "Select sal_id from Sale EXCEPT select plan_sala from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
             pst=conn.prepareStatement(klasaid);
             rs=pst.executeQuery();
           while(rs.next()){
@@ -945,6 +945,21 @@ private void CleanEditTime()
         });
 
         jLabel12.setText("Sala");
+
+        classList.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                classListPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        classList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classListActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Nauczyciel");
 
@@ -2899,6 +2914,31 @@ String tmp =(String)dzientygodnia.getSelectedItem();
         Fillcombonauczyciel();
         Fillcombosala();
     }//GEN-LAST:event_teacherListPopupMenuWillBecomeInvisible
+
+    private void classListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classListActionPerformed
+     
+       
+    }//GEN-LAST:event_classListActionPerformed
+
+    private void classListPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_classListPopupMenuWillBecomeInvisible
+          String tmp =(String)classList.getSelectedItem();
+       try{
+           String sql = "Select * from Sale where sal_numer = '"+tmp+"'";
+           
+                pst=conn.prepareStatement(sql);
+                 rs=pst.executeQuery();
+                 
+                
+                    int rodzaj=rs.getInt("sal_rodzaj");
+                     
+                       salapole.setText(Integer.toString(rodzaj));
+                       
+       
+       }
+       catch (Exception e){
+           
+       }
+    }//GEN-LAST:event_classListPopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments

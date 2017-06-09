@@ -167,9 +167,9 @@ public class DataBase {
        
         public static void CreateTablePlan()
      {
-         String sql = "CREATE TABLE IF NOT EXISTS Planzajec3 (\n"
+         String sql = "CREATE TABLE IF NOT EXISTS Planzajec4 (\n"
                 + "	plan_id integer PRIMARY KEY NOT NULL UNIQUE,\n"
-                + "	plan_klasa integer NOT NULL UNIQUE,\n"
+                + "	plan_klasa integer NOT NULL ,\n"
                 + "     plan_dzien string NOT NULL, \n"
                 + "     plan_godzina integer NOT NULL, \n"              
                 + "     plan_przedmiot integer NOT NULL, \n"
