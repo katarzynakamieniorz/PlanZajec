@@ -2083,6 +2083,23 @@ private void CleanEditTime()
      try (Statement stmt = conn.createStatement()) {
          stmt.executeUpdate(sqlAddClass);
      }
+     JOptionPane.showMessageDialog(null, "Dodano do planu zajęć!");
+            hourList.removeAllItems();
+        classList.removeAllItems();
+        teacherList.removeAllItems();
+        groupList.removeAllItems();
+        Fillcombo();
+        klasapole.setText("");
+        dzien.setText("");
+                godzina1.setText("");
+                 godzina2.setText("");
+                  godzina3.setText("");
+                   godzina4.setText("");
+                przedmiotpole.setText("");
+                imiepole1.setText("");
+                salapole.setText("");
+            CardLayout card = (CardLayout) mainPanel.getLayout();
+            card.show(mainPanel, "lessonPanel");
             pst.close();
             rs.close();
        }
