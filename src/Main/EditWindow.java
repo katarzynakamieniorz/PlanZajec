@@ -387,22 +387,25 @@ private void CleanEditTime()
           
             
                 int idklasa = rs.getInt("kla_id");
-              
+              String klaska = klasapole.getText();
         
-
-                String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec4 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
+         
+        
+                  String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec4 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
                  pst=conn.prepareStatement(sql123);
             rs=pst.executeQuery();
             while(rs.next()){
                 int tytul1=rs.getInt("ID_godz");
                 String godzina = Integer.toString(tytul1);
                           hourList.addItem(godzina);
-            }
+         
             
+            
+            }
 
             
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Wybierz klase!", "Error", JOptionPane.ERROR_MESSAGE);
     }finally {
         try{
             rs.close();
@@ -454,8 +457,8 @@ private void CleanEditTime()
             
 
             
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Wybierz przedmiot!", "Error", JOptionPane.ERROR_MESSAGE);
     }finally {
         try{
             rs.close();
@@ -504,14 +507,15 @@ private void CleanEditTime()
             
 
             
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        }catch(SQLException e){
+          JOptionPane.showMessageDialog(null, "Puste pole!", "Error", JOptionPane.ERROR_MESSAGE);
     }finally {
         try{
             rs.close();
             pst.close();
         }
-        catch(Exception e){
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Puste pole!", "Error", JOptionPane.ERROR_MESSAGE);
     }
     }
   }
