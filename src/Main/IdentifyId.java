@@ -36,7 +36,8 @@ public class IdentifyId {
         if(tabela.equals("Przedmioty")) {
             preper = conn.prepareStatement(wybierzPrzedmiot);
             result = preper.executeQuery();
-            return result.getString("prz_name");
+            String przedmiot = result.getString("prz_name");
+            return przedmiot;
         }
         if(tabela.equals("Nauczyciele")) { 
             preper = conn.prepareStatement(wybierzNauczyciela);
@@ -48,12 +49,14 @@ public class IdentifyId {
         if(tabela.equals("Sale1")) {
             preper = conn.prepareStatement(wybierzSale);
             result = preper.executeQuery();
-            return result.getString("sal_numer");
+            String sala = result.getString("sal_numer");
+            return sala;
         }
         if(tabela.equals("Klasy")) {
             preper = conn.prepareStatement(wybierzKlase);
             result = preper.executeQuery();
-            return result.getString("kla_nazwa");
+            String klasa = result.getString("kla_nazwa");
+            return klasa;
         }
         if(tabela.equals("Godzina")) {
             preper = conn.prepareStatement(wybierzGodz);
@@ -65,6 +68,7 @@ public class IdentifyId {
             String pelnaGodz = godz1 + ":" + godz2 + "-" + godz3 + ":" + godz4;
             return pelnaGodz;
         }
+        result.close();
         return nazwa;
     }
     

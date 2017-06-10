@@ -216,15 +216,15 @@ public class MainWindow extends javax.swing.JFrame {
         try {
             pst = conn.prepareStatement(pobierzGodziny);    
             rs = pst.executeQuery();
+
+            uzupelnijTabele.FillHours(scheduleTable, rs);
+            rs.close();
             
             pst2 = conn.prepareStatement(pobierzPlan);
             rs2 = pst2.executeQuery();
-
-            
-            uzupelnijTabele.FillHours(scheduleTable, rs);
            
             uzupelnijTabele.FillCell(scheduleTable, rs2);
-
+            rs2.close();
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Błąd w MainWindow: " + ex);

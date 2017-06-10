@@ -45,7 +45,6 @@ public class FillTable {
             tabela.setModel(model); //ustawiamy nowy model tabeli
             model.fireTableDataChanged();
         }
-
     }
     
     public void FillCell(JTable tabela, ResultSet rs) throws SQLException{
@@ -67,18 +66,17 @@ public class FillTable {
             String pelnaGodzina = sprawdzId.SprawdzString(godzina_id, "Godzina");
             
             System.out.println(nazwaPrzedmiotu + " " + nazwaNauczyciela + " " + nazwaSali);
-            
             String wstawString = nazwaPrzedmiotu + " " + nazwaNauczyciela + " " + nazwaSali;
             
             if(dzien.equals("poniedziałek")) {
                 System.out.println("Pierwszy if działa");
                 
                 for(int i=0; i<10; i++) {
-
+                    System.out.println("Iteracja: "+i);
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
                         model.setValueAt(wstawString, i, 1);
                         tabela.setModel(model);
-                        System.out.println("Drugi if działa");
+                        System.out.println("Drugi if działa, iteracja: "+i);
                     }
                 }
             }
@@ -117,12 +115,10 @@ public class FillTable {
                         tabela.setModel(model);
                     }
                 }
-            } 
-            
-            
- 
-        }
+            }
         
+        }
+        //rs.close();
         
     }
 }
