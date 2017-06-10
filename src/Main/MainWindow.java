@@ -27,14 +27,15 @@ public class MainWindow extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     
-    
+            
+    ResultSet rs2 = null;
+    PreparedStatement pst2 = null;
 
     public MainWindow() {
         initComponents();
 
         conn = DataBase.Connection();
-        initComponents();
-        
+
         CreateTableLogin();
         CreateTableSale();
         CreateTablePlan();
@@ -207,18 +208,26 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         FillTable uzupelnijTabele = new FillTable();
+
         
         String pobierzGodziny = "select * from godzina";
+        String pobierzPlan = "select * from planzajec5";
 
         try {
             pst = conn.prepareStatement(pobierzGodziny);    
             rs = pst.executeQuery();
+            
+            pst2 = conn.prepareStatement(pobierzPlan);
+            rs2 = pst2.executeQuery();
 
             
             uzupelnijTabele.FillHours(scheduleTable, rs);
+           
+            uzupelnijTabele.FillCell(scheduleTable, rs2);
+
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Błąd w MainWindow: " + ex);
         }
         
     }
