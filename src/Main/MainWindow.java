@@ -7,6 +7,11 @@
 package Main;
 
 import static Main.DataBase.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 /**
@@ -18,18 +23,48 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Creates new form MainWindow
      */
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
+    
+
     public MainWindow() {
         initComponents();
-        Connection();
+
+        conn = DataBase.Connection();
+        initComponents();
+        
         CreateTableLogin();
         CreateTableSale();
         CreateTablePlan();
         InsertIntoLogin("Admin1","Haslo1");
         InsertIntoLogin("Admin2","Haslo2");
         InsertIntoLogin("Admin3","Haslo3");
-        //CreateTableSale();
         
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        scheduleTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Godzina", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+        });
         
+        scheduleTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(scheduleTable);
     }
 
     /**
@@ -65,8 +100,34 @@ public class MainWindow extends javax.swing.JFrame {
             new String [] {
                 "Godzina", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scheduleTable.setEnabled(false);
+        scheduleTable.setFocusable(false);
+        scheduleTable.setOpaque(false);
+        scheduleTable.setRequestFocusEnabled(false);
+        scheduleTable.setRowSelectionAllowed(false);
+        scheduleTable.getTableHeader().setResizingAllowed(false);
+        scheduleTable.getTableHeader().setReorderingAllowed(false);
+        scheduleTable.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(scheduleTable);
+        if (scheduleTable.getColumnModel().getColumnCount() > 0) {
+            scheduleTable.getColumnModel().getColumn(0).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+            scheduleTable.getColumnModel().getColumn(1).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(1).setPreferredWidth(70);
+            scheduleTable.getColumnModel().getColumn(2).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(3).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(4).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         classLabel.setText("Klasa 1A");
 
@@ -95,13 +156,18 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addComponent(classLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,10 +184,10 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,6 +205,24 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        FillTable uzupelnijTabele = new FillTable();
+        
+        String pobierzGodziny = "select * from godzina";
+
+        try {
+            pst = conn.prepareStatement(pobierzGodziny);    
+            rs = pst.executeQuery();
+
+            
+            uzupelnijTabele.FillHours(scheduleTable, rs);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
