@@ -69,14 +69,14 @@ public class FillTable {
             String wstawString = nazwaPrzedmiotu + " " + nazwaNauczyciela + " " + nazwaSali;
             
             if(dzien.equals("poniedziałek")) {
-                System.out.println("Pierwszy if działa");
+                //System.out.println("Pierwszy if działa");
                 
                 for(int i=0; i<10; i++) {
-                    System.out.println("Iteracja: "+i);
+                    //System.out.println("Iteracja: "+i);
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
                         model.setValueAt(wstawString, i, 1);
                         tabela.setModel(model);
-                        System.out.println("Drugi if działa, iteracja: "+i);
+                        //System.out.println("Drugi if działa, iteracja: "+i);
                     }
                 }
             }
@@ -85,7 +85,7 @@ public class FillTable {
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
                         model.setValueAt(wstawString, i, 2);
                         tabela.setModel(model);
-                        System.out.println("Sprawdzam drugi warunek");
+                        //System.out.println("Sprawdzam drugi warunek");
                     }
                 }
             }
