@@ -555,7 +555,7 @@ private void CleanEditTime()
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<String>();
+        teacherBox = new javax.swing.JComboBox<>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -563,20 +563,20 @@ private void CleanEditTime()
         lessonPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        groupList = new javax.swing.JComboBox<String>();
+        groupList = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        classList = new javax.swing.JComboBox<String>();
+        classList = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        teacherList = new javax.swing.JComboBox<String>();
+        teacherList = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        hourList = new javax.swing.JComboBox<String>();
+        hourList = new javax.swing.JComboBox<>();
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         godzina1 = new javax.swing.JTextField();
         godzina2 = new javax.swing.JTextField();
         godzina3 = new javax.swing.JTextField();
@@ -585,8 +585,17 @@ private void CleanEditTime()
         imiepole1 = new javax.swing.JTextField();
         salapole = new javax.swing.JTextField();
         dzien = new javax.swing.JTextField();
-        dzientygodnia = new javax.swing.JComboBox<String>();
+        dzientygodnia = new javax.swing.JComboBox<>();
         klasapole = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
         classPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -598,7 +607,7 @@ private void CleanEditTime()
         CzyscButtonSale = new javax.swing.JButton();
         idtext = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        classcombo = new javax.swing.JComboBox<String>();
+        classcombo = new javax.swing.JComboBox<>();
         deleteButton = new javax.swing.JButton();
         Zapisz = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -607,18 +616,18 @@ private void CleanEditTime()
         classtext = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        comboteacher = new javax.swing.JComboBox<String>();
+        comboteacher = new javax.swing.JComboBox<>();
         changeTeacher = new javax.swing.JPanel();
         teacher = new javax.swing.JLabel();
-        teacherscombo = new javax.swing.JComboBox<String>();
+        teacherscombo = new javax.swing.JComboBox<>();
         deletebutton = new javax.swing.JButton();
         subject = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        sub1 = new javax.swing.JComboBox<String>();
-        sub2 = new javax.swing.JComboBox<String>();
-        sub3 = new javax.swing.JComboBox<String>();
-        sub4 = new javax.swing.JComboBox<String>();
-        sub5 = new javax.swing.JComboBox<String>();
+        sub1 = new javax.swing.JComboBox<>();
+        sub2 = new javax.swing.JComboBox<>();
+        sub3 = new javax.swing.JComboBox<>();
+        sub4 = new javax.swing.JComboBox<>();
+        sub5 = new javax.swing.JComboBox<>();
         nametext = new javax.swing.JTextField();
         surnametext = new javax.swing.JTextField();
         name = new javax.swing.JLabel();
@@ -628,7 +637,7 @@ private void CleanEditTime()
         idtextfield = new javax.swing.JTextField();
         changeLesson = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         mondayRadioBtn1 = new javax.swing.JRadioButton();
         tuesdayRadioBtn1 = new javax.swing.JRadioButton();
@@ -636,18 +645,18 @@ private void CleanEditTime()
         thursdayRadioBtn1 = new javax.swing.JRadioButton();
         fridayRadioBtn1 = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        listHour = new javax.swing.JComboBox<String>();
+        listHour = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<String>();
+        jComboBox7 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<String>();
+        jComboBox8 = new javax.swing.JComboBox<>();
         edit2Button = new javax.swing.JButton();
         delete2Button = new javax.swing.JButton();
         previewPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<String>();
+        jComboBox9 = new javax.swing.JComboBox<>();
         timePanel = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -661,7 +670,7 @@ private void CleanEditTime()
         time4 = new javax.swing.JTextField();
         changeTime = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
-        timeCombo = new javax.swing.JComboBox<String>();
+        timeCombo = new javax.swing.JComboBox<>();
         deleteTimeButton = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         idTimeField = new javax.swing.JTextField();
@@ -1054,7 +1063,7 @@ private void CleanEditTime()
             }
         });
 
-        dzientygodnia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Poniedzialek", "Wtorek", "Środa", "Czwartek", "Piątek" }));
+        dzientygodnia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Poniedzialek", "Wtorek", "Środa", "Czwartek", "Piątek" }));
         dzientygodnia.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -1064,6 +1073,24 @@ private void CleanEditTime()
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
+
+        jLabel37.setText("Wybrana klasa:");
+
+        jLabel38.setText("Wybrany dzień:");
+
+        jLabel39.setText("Wybrana godzina:");
+
+        jLabel40.setText(":");
+
+        jLabel41.setText(":");
+
+        jLabel42.setText("-");
+
+        jLabel43.setText("Wybrany przedmiot:");
+
+        jLabel44.setText("Wybrany nauczyciel:");
+
+        jLabel45.setText("Wybrana sala:");
 
         javax.swing.GroupLayout lessonPanelLayout = new javax.swing.GroupLayout(lessonPanel);
         lessonPanel.setLayout(lessonPanelLayout);
@@ -1075,120 +1102,144 @@ private void CleanEditTime()
             .addGroup(lessonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(lessonPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(lessonPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(lessonPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))
                     .addGroup(lessonPanelLayout.createSequentialGroup()
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(lessonPanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addGap(41, 41, 41)
+                                    .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(lessonPanelLayout.createSequentialGroup()
+                                            .addComponent(dzientygodnia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lessonPanelLayout.createSequentialGroup()
+                                            .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel43)
+                                                .addGroup(lessonPanelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel39)
+                                                    .addGap(31, 31, 31)
+                                                    .addComponent(godzina1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel44)
+                                                .addComponent(jLabel45))
+                                            .addGap(0, 0, 0))))
+                                .addGroup(lessonPanelLayout.createSequentialGroup()
+                                    .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(lessonPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(classList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(219, 219, 219)))
                             .addGroup(lessonPanelLayout.createSequentialGroup()
                                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(lessonPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(lessonPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addGap(41, 41, 41)
-                                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                                .addComponent(dzientygodnia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                                .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(godzina1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(22, 22, 22)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(223, 223, 223)))
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lessonPanelLayout.createSequentialGroup()
+                                .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(salapole, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(imiepole1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(19, 19, 19))
+                            .addGroup(lessonPanelLayout.createSequentialGroup()
                                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(salapole, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(lessonPanelLayout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(godzina2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(godzina3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(godzina4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(14, 14, 14))
-                    .addGroup(lessonPanelLayout.createSequentialGroup()
-                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(classList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(lessonPanelLayout.createSequentialGroup()
-                                        .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(119, 119, 119)
-                                        .addComponent(imiepole1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 27, Short.MAX_VALUE))
-                    .addGroup(lessonPanelLayout.createSequentialGroup()
-                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel42)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(godzina3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(godzina4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(14, 14, 14)
                 .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(lessonPanelLayout.createSequentialGroup()
-                    .addGap(404, 404, 404)
-                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(540, Short.MAX_VALUE)))
         );
         lessonPanelLayout.setVerticalGroup(
             lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lessonPanelLayout.createSequentialGroup()
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(lessonPanelLayout.createSequentialGroup()
-                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel14)
-                                .addGap(27, 27, 27)
-                                .addComponent(dzientygodnia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(69, 69, 69))
-                            .addGroup(lessonPanelLayout.createSequentialGroup()
-                                .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(groupList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel37)
+                            .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel38)
+                            .addComponent(dzien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(dzientygodnia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87)
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(hourList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(godzina1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(godzina4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(godzina3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(godzina2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(godzina2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel42))
                         .addGap(25, 25, 25)
                         .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(przedmiotpole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel43))
                         .addGap(26, 26, 26))
                     .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(teacherList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imiepole1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imiepole1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44))
                 .addGap(28, 28, 28)
                 .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(classList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(salapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
                 .addGap(31, 31, 31)
                 .addComponent(addLessonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
-            .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(lessonPanelLayout.createSequentialGroup()
-                    .addGap(42, 42, 42)
-                    .addComponent(klasapole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(448, Short.MAX_VALUE)))
         );
 
         mainPanel.add(lessonPanel, "lessonPanel");
@@ -1285,7 +1336,7 @@ private void CleanEditTime()
 
         jLabel18.setText("Wybierz klasę:");
 
-        classcombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klasa" }));
+        classcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Klasa" }));
         classcombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 classcomboItemStateChanged(evt);
@@ -1337,7 +1388,7 @@ private void CleanEditTime()
 
         jLabel29.setText("Klasa");
 
-        comboteacher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
+        comboteacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
         comboteacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboteacherActionPerformed(evt);
@@ -1404,7 +1455,7 @@ private void CleanEditTime()
 
         teacher.setText("Wybierz nauczyciela:");
 
-        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
+        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
         teacherscombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 teacherscomboItemStateChanged(evt);
@@ -1602,7 +1653,7 @@ private void CleanEditTime()
 
         jLabel25.setText("Sala:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox7ActionPerformed(evt);
@@ -1650,7 +1701,7 @@ private void CleanEditTime()
 
         jLabel27.setText("Przedmiot:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -1675,7 +1726,7 @@ private void CleanEditTime()
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -1824,7 +1875,7 @@ private void CleanEditTime()
 
         jLabel35.setText("Wybierz godzinę, którą chcesz usunąć z planu");
 
-        timeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Wybierz ---" }));
+        timeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Wybierz ---" }));
         timeCombo.setToolTipText("");
         timeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -3131,7 +3182,16 @@ NewID noweId = new NewID();
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
