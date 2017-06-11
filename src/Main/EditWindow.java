@@ -391,7 +391,7 @@ private void CleanEditTime()
         
          
         
-                  String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec4 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
+                  String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec5 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
                  pst=conn.prepareStatement(sql123);
             rs=pst.executeQuery();
             while(rs.next()){
@@ -429,7 +429,7 @@ private void CleanEditTime()
             //String klasaid = "Select * from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"'";
            
            
-          String klasaid = "Select Nau_ID from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"' EXCEPT select plan_nauczyciel from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
+          String klasaid = "Select Nau_ID from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"' EXCEPT select plan_nauczyciel from Planzajec5 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
             pst=conn.prepareStatement(klasaid);
             rs=pst.executeQuery();
           while(rs.next()){
@@ -446,7 +446,7 @@ private void CleanEditTime()
               
             }
           }
-//                String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec2 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
+//                String sql123 ="select ID_godz from Godzina EXCEPT select plan_godzina from Planzajec5 where plan_klasa = '"+idklasa+"' and plan_dzien = '"+dzientyg+"'";
 //                 pst=conn.prepareStatement(sql123);
 //            rs=pst.executeQuery();
 //            while(rs.next()){
@@ -479,7 +479,7 @@ private void CleanEditTime()
             //String klasaid = "Select * from Nauczyciele where Prz_NAME_1 = '"+przedmiot+"' OR Prz_NAME_2 = '"+przedmiot+"' OR Prz_NAME_3 = '"+przedmiot+"' OR Prz_NAME_4 = '"+przedmiot+"' OR Prz_NAME_5 = '"+przedmiot+"'";
            
            
-          String klasaid = "Select sal_id from Sale1 EXCEPT select plan_sala from Planzajec4 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
+          String klasaid = "Select sal_id from Sale1 EXCEPT select plan_sala from Planzajec5 where plan_dzien = '"+dzientyg+"' and plan_godzina = '"+tmp+"'";
             pst=conn.prepareStatement(klasaid);
             rs=pst.executeQuery();
           while(rs.next()){
@@ -2077,8 +2077,9 @@ private void CleanEditTime()
             rs = pst.executeQuery();   
              int nauczycielid =rs.getInt("Nau_ID");  
              a.setText(Integer.toString(nauczycielid));
-
-       String sqlAddClass = "insert into Planzajec5 values ('2','" + idklasy + "','" + dzientygodnia1 + "','" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' );";
+NewID noweId = new NewID();
+        int Idplanu = noweId.UstawNumer("plan_id","Planzajec5");
+       String sqlAddClass = "insert into Planzajec5 values ('" + Idplanu + "','" + idklasy + "','" + dzientygodnia1 + "','" + godzinaidint + "','" + przedmiotid + "','" + nauczycielid + "','" + salaajdi + "' );";
                     
      try (Statement stmt = conn.createStatement()) {
          stmt.executeUpdate(sqlAddClass);
