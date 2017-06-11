@@ -68,7 +68,7 @@ public class FillTable {
             System.out.println(nazwaPrzedmiotu + " " + nazwaNauczyciela + " " + nazwaSali);
             String wstawString = nazwaPrzedmiotu + " " + nazwaNauczyciela + " " + nazwaSali;
             
-            if(dzien.equals("Poniedziałek")) {
+            if(dzien.equals("poniedziałek")) {
                 //System.out.println("Pierwszy if działa");
                 
                 for(int i=0; i<10; i++) {
@@ -80,7 +80,7 @@ public class FillTable {
                     }
                 }
             }
-            if (dzien.equals("Wtorek")) {
+            if (dzien.equals("wtorek")) {
                 for(int i=0; i<10; i++) {
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
                         model.setValueAt(wstawString, i, 2);
@@ -89,7 +89,7 @@ public class FillTable {
                     }
                 }
             }
-            if (dzien.equals("Środa")) {
+            if (dzien.equals("środa")) {
                 for(int i=0; i<10; i++) {
 
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
@@ -98,7 +98,7 @@ public class FillTable {
                     }
                 }
             }
-            if (dzien.equals("Czwartek")) {
+            if (dzien.equals("czwartek")) {
                 for(int i=0; i<10; i++) {
 
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {
@@ -107,7 +107,7 @@ public class FillTable {
                     }
                 }
             }
-            if (dzien.equals("Piątek")) {
+            if (dzien.equals("piątek")) {
                 for(int i=0; i<10; i++) {
 
                     if(pelnaGodzina.equals(model.getValueAt(i, 0))) {

@@ -46,7 +46,7 @@ public class NewID {
 
         return number2;
     }
-    //po chuja to skopiowałaś????
+    
     public int UstawNumerNauczyciela(String id_nau, String tabela){
 
         Connection conn = DataBase.Connection();
