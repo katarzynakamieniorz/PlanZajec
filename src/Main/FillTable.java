@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FillTable {
     
-    
+    //metoda wypełnia całą kolumnę Godziny
     public void FillHours(JTable tabela, ResultSet rs)throws SQLException{
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
@@ -47,6 +47,7 @@ public class FillTable {
         }
     }
     
+    // metoda wypełnia konkretną komórkę w tabeli (dla podanej godziny i dnia- ResultSet)
     public void FillCell(JTable tabela, ResultSet rs) throws SQLException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         IdentifyId sprawdzId = new IdentifyId();
@@ -120,5 +121,15 @@ public class FillTable {
         }
         //rs.close();
         
+    }
+    
+    //metoda czyści tabelę (musi być wywoływana za każdym razem przed odświeżeniem)
+    public void ClearTable(JTable tabela) {
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+        
+        int row = model.getRowCount();
+        for(int i = row-1; i >= 0; i--) {
+            model.removeRow(i);
+        }
     }
 }

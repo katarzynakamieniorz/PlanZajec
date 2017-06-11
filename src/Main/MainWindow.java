@@ -13,7 +13,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
@@ -52,6 +56,7 @@ public class MainWindow extends javax.swing.JFrame {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
+
         });
         scheduleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +80,7 @@ public class MainWindow extends javax.swing.JFrame {
     
     
     private void FillList() {
-        String getGroupList = "select * from klasy";
+        String getGroupList = "select * from klasy order by kla_nazwa";
         String klasa;
         
         DefaultListModel<String> modelListy = (DefaultListModel) groupList.getModel();
@@ -241,57 +246,61 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void groupListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_groupListMouseClicked
-        // TODO add your handling code here:
+        
 
     }//GEN-LAST:event_groupListMouseClicked
 
-
-            
+    //formmWindowOpened pozwala na odświeżanie tabeli w czasie rzeczywistym - ActionListener na górze!
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        FillTable uzupelnijTabele = new FillTable();
-        //String aktualnaGrupa = groupList.getSelectedValue();
-        String pobranaGrupa = "1";
-        String aktualnaGrupa = groupList.getSelectedValue();
-    
-        IdentifyId sprawdzId = new IdentifyId();
-        
-        System.out.println("Aktualna grupa: "+ aktualnaGrupa);
-        System.out.println("Pobrana grupa: "+ pobranaGrupa);
-//        
-//    groupList.addMouseListener(new MouseAdapter() {
-//        //@Override
-//        public void MouseClicked(MouseEvent e) {
-//            System.out.println("Mouse click.");
-//        aktualnaGrupa = groupList.getSelectedValue();
-//        }
-//    });
-        
-//        try{
-//            pobranaGrupa = sprawdzId.SprawdzString(aktualnaGrupa, "Klasy");
-//        } catch(SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-        
-        String pobierzGodziny = "select * from godzina";
-        String pobierzPlan = "select * from planzajec5 where plan_klasa like '" + pobranaGrupa + "'";;
-        
-        try {
-            pst = conn.prepareStatement(pobierzGodziny);    
-            rs = pst.executeQuery();
 
-            uzupelnijTabele.FillHours(scheduleTable, rs);
-            pst.close();
-            rs.close();
+        groupList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                if (evt.getClickCount() == 1) {
+                    //System.out.println("Wykryto kliknięcie");
+                    FillTable uzupelnijTabele = new FillTable();
+                    
+                    uzupelnijTabele.ClearTable(scheduleTable);
+
+                    DefaultListModel<String> modelListy = (DefaultListModel) groupList.getModel();
+
+                    IdentifyId sprawdzId = new IdentifyId();
+        
+                    int index = list.locationToIndex(evt.getPoint());
+                    //System.out.println("Index wcisnietego elementu"+index);
+                    String pobranaGrupa = modelListy.getElementAt(index);
+                    String aktualnaGrupa = "1";
+                    System.out.println("Pobrana grupa: "+ pobranaGrupa);
+                    
+                    try {
+                        aktualnaGrupa = sprawdzId.SprawdzId(pobranaGrupa, "Klasy");
+                        String pobierzGodziny = "select * from godzina";
+                        String pobierzPlan = "select * from planzajec5 where plan_klasa like '" + aktualnaGrupa + "'";
+                        
+                        System.out.println("Aktualna grupa: "+aktualnaGrupa);
+                        classLabel.setText("Klasa " + pobranaGrupa);
+                        
+                        pst = conn.prepareStatement(pobierzGodziny);    
+                        rs = pst.executeQuery();
+
+                        uzupelnijTabele.FillHours(scheduleTable, rs);
+                        pst.close();
+                        rs.close();
            
-            pst2 = conn.prepareStatement(pobierzPlan);
-            rs2 = pst2.executeQuery();
+                        pst2 = conn.prepareStatement(pobierzPlan);
+                        rs2 = pst2.executeQuery();
            
-            uzupelnijTabele.FillCell(scheduleTable, rs2);
-            rs2.close();
+                        uzupelnijTabele.FillCell(scheduleTable, rs2);
+                        rs2.close();
             
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Błąd w MainWindow: " + ex);
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Błąd w MainWindow: " + ex);
+                    }
+                }
+            }
         }
+        
+        );
         
     }
     

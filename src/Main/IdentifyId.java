@@ -20,6 +20,7 @@ public class IdentifyId {
     PreparedStatement preper = null;
     Connection conn = null;
     
+    // metoda sprawdza jaka jest wartość dla danego numeru ID w podanej tabeli
     public String SprawdzString(String numer_id, String tabela) throws SQLException{
         conn = DataBase.Connection();
         
@@ -70,6 +71,23 @@ public class IdentifyId {
         }
         result.close();
         return nazwa;
+    }
+    
+    //metoda sprawdza jakie jest ID dla podanej tabeli i podanej wartości
+    public String SprawdzId(String nazwa, String tabela) throws SQLException {
+        String numer_id = "0";
+        conn = DataBase.Connection();
+        
+        String wybierzKlase = "select * from Klasy where kla_nazwa like '"+ nazwa +"'";
+        
+        if(tabela.equals("Klasy")) {
+            preper = conn.prepareStatement(wybierzKlase);
+            result = preper.executeQuery();
+            String numer_klasy = result.getString("kla_id");
+            return numer_klasy;
+        }
+        
+        return numer_id;
     }
     
 }
