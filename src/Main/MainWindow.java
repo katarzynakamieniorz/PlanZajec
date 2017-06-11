@@ -7,10 +7,13 @@
 package Main;
 
 import static Main.DataBase.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
@@ -31,11 +34,13 @@ public class MainWindow extends javax.swing.JFrame {
     ResultSet rs2 = null;
     PreparedStatement pst2 = null;
 
+
     public MainWindow() {
         initComponents();
 
         conn = DataBase.Connection();
-
+        FillList();
+        
         CreateTableLogin();
         CreateTableSale();
         CreateTablePlan();
@@ -67,6 +72,33 @@ public class MainWindow extends javax.swing.JFrame {
         scheduleTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(scheduleTable);
     }
+    
+    
+    private void FillList() {
+        String getGroupList = "select * from klasy";
+        String klasa;
+        
+        DefaultListModel<String> modelListy = (DefaultListModel) groupList.getModel();
+        
+        try {
+            pst = conn.prepareStatement(getGroupList);
+            rs = pst.executeQuery();
+        
+            while(rs.next()) {
+                klasa = rs.getString("kla_nazwa");
+                modelListy.addElement(klasa);
+                System.out.println(klasa);
+            }
+            
+            rs.close();
+            pst.close();
+            
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +115,7 @@ public class MainWindow extends javax.swing.JFrame {
         adminButton = new javax.swing.JButton();
         textLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        groupList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,12 +174,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         textLabel.setText("Wybierz grupę");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        groupList.setModel(new DefaultListModel());
+        groupList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                groupListMouseClicked(evt);
+            }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(groupList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,20 +240,49 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void groupListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_groupListMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_groupListMouseClicked
+
+
+            
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         FillTable uzupelnijTabele = new FillTable();
-
+        //String aktualnaGrupa = groupList.getSelectedValue();
+        String pobranaGrupa = "1";
+        String aktualnaGrupa = groupList.getSelectedValue();
+    
+        IdentifyId sprawdzId = new IdentifyId();
+        
+        System.out.println("Aktualna grupa: "+ aktualnaGrupa);
+        System.out.println("Pobrana grupa: "+ pobranaGrupa);
+//        
+//    groupList.addMouseListener(new MouseAdapter() {
+//        //@Override
+//        public void MouseClicked(MouseEvent e) {
+//            System.out.println("Mouse click.");
+//        aktualnaGrupa = groupList.getSelectedValue();
+//        }
+//    });
+        
+//        try{
+//            pobranaGrupa = sprawdzId.SprawdzString(aktualnaGrupa, "Klasy");
+//        } catch(SQLException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
         
         String pobierzGodziny = "select * from godzina";
-        String pobierzPlan = "select * from planzajec5";
-
+        String pobierzPlan = "select * from planzajec5 where plan_klasa like '" + pobranaGrupa + "'";;
+        
         try {
             pst = conn.prepareStatement(pobierzGodziny);    
             rs = pst.executeQuery();
 
             uzupelnijTabele.FillHours(scheduleTable, rs);
+            pst.close();
             rs.close();
-            
+           
             pst2 = conn.prepareStatement(pobierzPlan);
             rs2 = pst2.executeQuery();
            
@@ -271,7 +333,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminButton;
     private javax.swing.JLabel classLabel;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> groupList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable scheduleTable;
