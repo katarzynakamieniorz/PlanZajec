@@ -875,7 +875,7 @@ private void CleanEditTime()
                                 .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(58, 58, 58)
                         .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(609, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         groupPanelLayout.setVerticalGroup(
             groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -891,7 +891,7 @@ private void CleanEditTime()
                 .addGroup(groupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(teacherBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         mainPanel.add(groupPanel, "groupPanel");
@@ -1261,11 +1261,11 @@ private void CleanEditTime()
                         .addComponent(classNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(normalCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addClassBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(CzyscButtonSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1285,7 +1285,7 @@ private void CleanEditTime()
                 .addComponent(gymCheckBox)
                 .addGap(7, 7, 7)
                 .addComponent(itCheckBox)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         mainPanel.add(classPanel, "classPanel");
@@ -1682,7 +1682,7 @@ private void CleanEditTime()
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -2072,7 +2072,7 @@ private void CleanEditTime()
              
              int przedmiotid =rs.getInt("Prz_ID");     
          
-        String sql23 = "Select * from Nauczyciele where Nau_Nazwisko ||' ' || Nau_Imie = '"+NameSurname+"'";
+        String sql23 = "Select * from Nauczyciele where Nau_Imie ||' ' || Nau_Nazwisko = '"+NameSurname+"'";
          pst = conn.prepareStatement(sql23);
             rs = pst.executeQuery();   
              int nauczycielid =rs.getInt("Nau_ID");  

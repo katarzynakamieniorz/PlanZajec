@@ -114,6 +114,7 @@ public class MainWindow extends javax.swing.JFrame {
         scheduleTable.setFocusable(false);
         scheduleTable.setOpaque(false);
         scheduleTable.setRequestFocusEnabled(false);
+        scheduleTable.setRowHeight(35);
         scheduleTable.setRowSelectionAllowed(false);
         scheduleTable.getTableHeader().setResizingAllowed(false);
         scheduleTable.getTableHeader().setReorderingAllowed(false);
