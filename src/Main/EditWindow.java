@@ -555,7 +555,7 @@ private void CleanEditTime()
         jLabel6 = new javax.swing.JLabel();
         classField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        teacherBox = new javax.swing.JComboBox<>();
+        teacherBox = new javax.swing.JComboBox<String>();
         addClassButton = new javax.swing.JButton();
         cleanPanel = new javax.swing.JPanel();
         teacherPanel2 = new javax.swing.JPanel();
@@ -563,20 +563,20 @@ private void CleanEditTime()
         lessonPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        groupList = new javax.swing.JComboBox<>();
+        groupList = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
-        classList = new javax.swing.JComboBox<>();
+        classList = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
-        teacherList = new javax.swing.JComboBox<>();
+        teacherList = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        hourList = new javax.swing.JComboBox<>();
+        hourList = new javax.swing.JComboBox<String>();
         previewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         addLessonBtn = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         godzina1 = new javax.swing.JTextField();
         godzina2 = new javax.swing.JTextField();
         godzina3 = new javax.swing.JTextField();
@@ -585,7 +585,7 @@ private void CleanEditTime()
         imiepole1 = new javax.swing.JTextField();
         salapole = new javax.swing.JTextField();
         dzien = new javax.swing.JTextField();
-        dzientygodnia = new javax.swing.JComboBox<>();
+        dzientygodnia = new javax.swing.JComboBox<String>();
         klasapole = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -607,7 +607,7 @@ private void CleanEditTime()
         CzyscButtonSale = new javax.swing.JButton();
         idtext = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        classcombo = new javax.swing.JComboBox<>();
+        classcombo = new javax.swing.JComboBox<String>();
         deleteButton = new javax.swing.JButton();
         Zapisz = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -616,18 +616,18 @@ private void CleanEditTime()
         classtext = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        comboteacher = new javax.swing.JComboBox<>();
+        comboteacher = new javax.swing.JComboBox<String>();
         changeTeacher = new javax.swing.JPanel();
         teacher = new javax.swing.JLabel();
-        teacherscombo = new javax.swing.JComboBox<>();
+        teacherscombo = new javax.swing.JComboBox<String>();
         deletebutton = new javax.swing.JButton();
         subject = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        sub1 = new javax.swing.JComboBox<>();
-        sub2 = new javax.swing.JComboBox<>();
-        sub3 = new javax.swing.JComboBox<>();
-        sub4 = new javax.swing.JComboBox<>();
-        sub5 = new javax.swing.JComboBox<>();
+        sub1 = new javax.swing.JComboBox<String>();
+        sub2 = new javax.swing.JComboBox<String>();
+        sub3 = new javax.swing.JComboBox<String>();
+        sub4 = new javax.swing.JComboBox<String>();
+        sub5 = new javax.swing.JComboBox<String>();
         nametext = new javax.swing.JTextField();
         surnametext = new javax.swing.JTextField();
         name = new javax.swing.JLabel();
@@ -637,7 +637,7 @@ private void CleanEditTime()
         idtextfield = new javax.swing.JTextField();
         changeLesson = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel23 = new javax.swing.JLabel();
         mondayRadioBtn1 = new javax.swing.JRadioButton();
         tuesdayRadioBtn1 = new javax.swing.JRadioButton();
@@ -645,18 +645,18 @@ private void CleanEditTime()
         thursdayRadioBtn1 = new javax.swing.JRadioButton();
         fridayRadioBtn1 = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
-        listHour = new javax.swing.JComboBox<>();
+        listHour = new javax.swing.JComboBox<String>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<String>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox8 = new javax.swing.JComboBox<String>();
         edit2Button = new javax.swing.JButton();
         delete2Button = new javax.swing.JButton();
         previewPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<String>();
         timePanel = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -670,7 +670,7 @@ private void CleanEditTime()
         time4 = new javax.swing.JTextField();
         changeTime = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
-        timeCombo = new javax.swing.JComboBox<>();
+        timeCombo = new javax.swing.JComboBox<String>();
         deleteTimeButton = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         idTimeField = new javax.swing.JTextField();
@@ -686,6 +686,8 @@ private void CleanEditTime()
         teachersItem2 = new javax.swing.JMenuItem();
         lessonItem2 = new javax.swing.JMenuItem();
         TimeItem = new javax.swing.JMenuItem();
+        Wyloguj = new javax.swing.JMenu();
+        WylogujZPanelu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1063,7 +1065,7 @@ private void CleanEditTime()
             }
         });
 
-        dzientygodnia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Poniedzialek", "Wtorek", "Środa", "Czwartek", "Piątek" }));
+        dzientygodnia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Poniedzialek", "Wtorek", "Środa", "Czwartek", "Piątek" }));
         dzientygodnia.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -1139,8 +1141,7 @@ private void CleanEditTime()
                                                     .addGap(31, 31, 31)
                                                     .addComponent(godzina1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addComponent(jLabel44)
-                                                .addComponent(jLabel45))
-                                            .addGap(0, 0, 0))))
+                                                .addComponent(jLabel45)))))
                                 .addGroup(lessonPanelLayout.createSequentialGroup()
                                     .addGroup(lessonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1336,7 +1337,7 @@ private void CleanEditTime()
 
         jLabel18.setText("Wybierz klasę:");
 
-        classcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Klasa" }));
+        classcombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klasa" }));
         classcombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 classcomboItemStateChanged(evt);
@@ -1388,7 +1389,7 @@ private void CleanEditTime()
 
         jLabel29.setText("Klasa");
 
-        comboteacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
+        comboteacher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
         comboteacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboteacherActionPerformed(evt);
@@ -1455,7 +1456,7 @@ private void CleanEditTime()
 
         teacher.setText("Wybierz nauczyciela:");
 
-        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nauczyciel" }));
+        teacherscombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nauczyciel" }));
         teacherscombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 teacherscomboItemStateChanged(evt);
@@ -1653,7 +1654,7 @@ private void CleanEditTime()
 
         jLabel25.setText("Sala:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox7ActionPerformed(evt);
@@ -1701,7 +1702,7 @@ private void CleanEditTime()
 
         jLabel27.setText("Przedmiot:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wybierz--------" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wybierz--------" }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -1726,7 +1727,7 @@ private void CleanEditTime()
                     .addGroup(changeLessonLayout.createSequentialGroup()
                         .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(changeLessonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel25)
                             .addComponent(jLabel26)
@@ -1875,7 +1876,7 @@ private void CleanEditTime()
 
         jLabel35.setText("Wybierz godzinę, którą chcesz usunąć z planu");
 
-        timeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Wybierz ---" }));
+        timeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Wybierz ---" }));
         timeCombo.setToolTipText("");
         timeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -2036,6 +2037,18 @@ private void CleanEditTime()
         editMenu.add(TimeItem);
 
         jMenuBar1.add(editMenu);
+
+        Wyloguj.setText("Wyloguj");
+
+        WylogujZPanelu.setText("Wyloguj z Panelu Administratora");
+        WylogujZPanelu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WylogujZPaneluActionPerformed(evt);
+            }
+        });
+        Wyloguj.add(WylogujZPanelu);
+
+        jMenuBar1.add(Wyloguj);
 
         setJMenuBar(jMenuBar1);
 
@@ -3053,6 +3066,14 @@ NewID noweId = new NewID();
        }
     }//GEN-LAST:event_classListPopupMenuWillBecomeInvisible
 
+    private void WylogujZPaneluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WylogujZPaneluActionPerformed
+        MainWindow edit = new MainWindow();
+        edit.setVisible(true);
+        dispose();
+        
+       
+    }//GEN-LAST:event_WylogujZPaneluActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3094,6 +3115,8 @@ NewID noweId = new NewID();
     private javax.swing.JButton Bwyczysc;
     private javax.swing.JButton CzyscButtonSale;
     private javax.swing.JMenuItem TimeItem;
+    private javax.swing.JMenu Wyloguj;
+    private javax.swing.JMenuItem WylogujZPanelu;
     private javax.swing.JButton Zapisz;
     private javax.swing.JButton addClassBtn;
     private javax.swing.JButton addClassButton;

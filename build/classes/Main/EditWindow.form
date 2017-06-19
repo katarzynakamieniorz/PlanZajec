@@ -103,6 +103,21 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="Wyloguj">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Wyloguj"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="WylogujZPanelu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wyloguj z Panelu Administratora"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WylogujZPaneluActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -583,7 +598,6 @@
                                                       <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
